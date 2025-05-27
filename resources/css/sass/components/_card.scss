@@ -1,0 +1,8 @@
+@use '../abstracts';
+
+
+.card {
+  border-radius: abstracts.$card-border-radius;
+  background-color: abstracts.$bg-card;
+  padding: abstracts.$card-padding;
+}

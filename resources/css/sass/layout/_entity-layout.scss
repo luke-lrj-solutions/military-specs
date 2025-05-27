@@ -1,0 +1,25 @@
+@use '../abstracts';
+@use '../components';
+
+.entity-grid {
+  display: grid;
+  grid-template-columns: 300px 3fr;
+  gap: abstracts.$desktop-gap;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.entity-sidebar {
+  @extend .card;
+
+  &__image {
+    margin-bottom: 1rem;
+  }
+
+}
+
+.entity-content {
+  @extend .card;
+}

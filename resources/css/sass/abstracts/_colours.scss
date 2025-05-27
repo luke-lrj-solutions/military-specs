@@ -8,16 +8,19 @@ $color-error: #dc3545;
 
 // Utility colors
 $color-white: #fff;
-$color-black: #000;
+$color-black: #0D1117;
 $color-light: #f8f9fa;
-$color-dark: #0e1217;
-$color-border: #dee2e6;
+$color-dark: #161b22;
+
+$color-baby-blue: #94B2C7;
+$smoke-gray: #374151;
 
 // Backgrounds
-$bg-body: $color-dark;
+$bg-body: $color-black;
 $bg-header: #2e3a59;
 $bg-footer: #1c1f2a;
-$bg-card: #ffffff;
+$bg-card: $color-dark;
+$color-border: $smoke-gray;
 $bg-alt: #eef1f5;
 
 // Text
@@ -25,5 +28,4 @@ $text-body: $color-light;
 $text-muted: #6c757d;
 $text-dark: $color-dark;
 
-// Utility
-$color-border: #dee2e6;
+

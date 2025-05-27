@@ -4,7 +4,14 @@
 // Base
 @use "sass/base";
 
+// Layout
+@use "sass/layout";
+
+// Components
+@use "sass/components";
+
 
 @source "../views/";
 @source "../../app/";
+
 

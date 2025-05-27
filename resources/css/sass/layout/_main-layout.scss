@@ -1,0 +1,7 @@
+@use '../abstracts';
+
+// Main content area
+#main, #main-footer, #main-header {
+  padding: abstracts.$container-padding;
+}
+
