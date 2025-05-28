@@ -111,7 +111,6 @@
         &::after {
           width: 100%;
         }
-        //text-decoration: underline;
       }
     }
   }
@@ -120,7 +119,7 @@
       a {
         &::after {
 
-          width: 50%;
+          width: 30px;
 
         }
         &:hover {

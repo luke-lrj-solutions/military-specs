@@ -3,36 +3,45 @@
   @if ($heading)
     <h2 class="table__heading">{{ $heading }}</h2>
   @endif
-  @if($subheading)
+
+  @if ($subheading)
     <h3 class="table__subheading">{{ $subheading }}</h3>
   @endif
-  <table>
-    <thead>
-    <tr>
-      <th>Name</th> {{-- Thumbnail column --}}
-      <th></th>
-      <th>Description</th>
-      <th></th> {{-- Action column --}}
-    </tr>
-    </thead>
-    <tbody>
-    @foreach ($items as $item)
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
       <tr>
-        <td class="table__name"><a href="#">{{ $item['name'] }}</a></td>
-        <td class="table__thumb">
-          @if ($item['thumbnail'])
-            {!! $item['thumbnail'] !!}
-          @endif
-        </td>
-
-        <td class="table__description">{{ $item['description'] ?? '' }}</td>
-        <td class="table__action">
-          <a href="{{ $item['link'] }}" class="table__button">View</a>
-        </td>
+        <th>Vehicle</th>
+        <th></th>
+        <th>Description</th>
+        @foreach ($columns as $col)
+          <th>{{ $col }}</th>
+        @endforeach
       </tr>
-    @endforeach
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+      @foreach ($rows as $row)
+        <tr>
+          {{-- Thumbnail & Name --}}
+          <td class="table__thumb">        @if (!empty($row['thumbnail']))
+              {!! $row['thumbnail'] !!}
+            @endif</td>
+          <td class="table__name">
+
+            <a href="">{{ $row['name'] ?? '' }}</a>
+          </td>
+
+          {{-- Description --}}
+          <td class="table__description">{{ $row['description'] ?? '' }}</td>
+
+          {{-- Dynamic fields --}}
+          @foreach ($row['fields'] ?? [] as $field)
+            <td>{{ $field }}</td>
+          @endforeach
+        </tr>
+      @endforeach
+      </tbody>
+    </table>
+  </div>
 </div>
-
-
