@@ -8,29 +8,7 @@
           $svg_file = get_field('svg_file');
         @endphp
 
-        @if($svg_file)
-          @php
-            $svg_path = get_attached_file($svg_file['ID']);
-            $svg_content = file_get_contents($svg_path);
-               if ($svg_content) {
-                // Add inline style width: 100% to <svg> tag
-                $svg_content = preg_replace(
-                  '/<svg([^>]*)>/',
-                  '<svg$1 style="width:100%; height:auto">',
-                  $svg_content,
-                  1
-                );
-              }
-          @endphp
-
-          @if($svg_content)
-            <div class="svg-entity">
-              {!! $svg_content !!}
-            </div>
-          @endif
-        @else
-          <p>No SVG available for this vehicle.</p>
-        @endif
+        <x-svg-entity :file="$svg_file" class="svg-vehicle" />
 
         <div class="entity-sidebar__meta meta-list">
           <div class="meta-item">
@@ -49,15 +27,83 @@
 
     <main class="entity-content">
       <h1>{{ get_the_title() }}</h1>
-      <h2>{{ get_the_title() }}</h2>
-      <h3>{{ get_the_title() }}</h3>
-      <h4>{{ get_the_title() }}</h4>
-      <h5>{{ get_the_title() }}</h5>
-      <h6>{{ get_the_title() }}</h6>
-      <p class="key">{{ get_the_title() }}</p>
-      <p>{{ get_the_title() }}</p>
+      <x-information-table
+        heading="Classification"
+        subheading="Names"
+        :columns="['Reference', 'Name']"
+        :rows="[
+          ['Nickname', 'Fighting Falcon'],
+          ['Official', 'Block 17'],
+        ]"
+      />
+      @php
+
+      $items = [
+          [
+            'name' => 'F-16B',
+            'description' => 'Multirole Fighter',
+            'thumbnail' => '<svg xmlns="http://www.w3.org/2000/svg" width="463" height="149" viewBox="0 0 463 149" fill="#fff" style="width:100%; height:auto;" class="svg-vehicle"><style>svg * { stroke: #f8f9fa !important; fill: #161b22 !important; }</style>
+  <path d="M111.806 67.4612L40.0097 2H2V5.51942L33.6748 68.165H32.267V75.9078H35.0825V81.5388C35.3172 82.4773 36.3495 84.3544 38.6019 84.3544C40.8544 84.3544 55.0259 83.4159 61.8301 82.9466V84.3544L12.5583 92.0971V117.437L73.7961 127.995L99.1359 129.403V139.257L130.811 147L140.665 131.515C280.034 133.626 322.267 131.515 324.379 131.515C326.068 131.515 326.49 130.107 326.49 129.403V117.437C326.49 116.498 327.053 114.621 329.306 114.621H334.937V112.51L379.985 113.917C393.594 114.387 423.345 115.184 433.481 114.621C443.617 114.058 454.128 111.571 458.117 110.398C454.597 108.756 448.262 104.063 433.481 99.8398C421.163 96.3204 393.594 89.5162 380.689 86.466C374.589 82.4773 361.544 74.2184 358.165 73.0922C353.942 71.6845 339.16 65.3495 318.748 68.165C302.417 70.4175 280.503 75.2039 271.587 77.3155L230.058 82.2427L163.189 81.5388L150.519 78.7233L146.296 69.5728H143.481V75.9078L111.806 67.4612Z" stroke="black" stroke-width="3"></path>
+</svg>',
+            'link' => get_permalink(542),
+          ],
+
+        ];
+      @endphp
+
+      <x-entity-table-detailed
+        heading="Related Vehicles"
+        subheading=""
+        :items="$items"
+      />
 
 
+      <x-entity-table
+        heading="Armament"
+        subheading="Missiles"
+        :columns="['Name', 'Installed', 'Munitions Stored', 'Notes']"
+        :rows="[
+          ['AIM-9 Sidewinder', 2, 4, 'Short-range air-to-air'],
+          ['AIM-7 Sparrow', 2, 2, 'Medium-range air-to-air'],
+          ['AIM-120 AMRAAM', 4, 4, 'Advanced medium-range']
+        ]"
+      />
+      <x-entity-table
+        heading=""
+        subheading="Bombs"
+        :columns="['Name', 'Installed', 'Munitions Stored', 'Notes']"
+        :rows="[
+          ['GBU-12 Paveway', 2, 4, '500lb Bomb'],
+          ['GBU-14 Paveway', 2, 2, '250lb Bomb'],
+        ]"
+      />
+      <x-entity-table
+        heading=""
+        subheading="Rockets"
+        :columns="['Name', 'Installed', 'Munitions Stored', 'Notes']"
+        :rows="[
+          ['Hydra 70', 2, 64, 'Unguided rockets'],
+        ]"
+      />
+
+      @php
+        $features = [
+          ['label' => 'Radar Warning Receiver', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5642 5.54956C20.7198 10.0579 19.1217 15.4662 14.8618 18.0788C10.6019 20.6914 5.05682 19.664 2.01558 15.6988C-1.02565 11.7336 -0.580319 6.11176 3.04727 2.67482C6.67486 -0.762128 12.3126 -0.903603 16.108 2.34706L18.2333 0.220815C18.5263 -0.0722414 19.0015 -0.0722414 19.2945 0.220815C19.5876 0.513871 19.5876 0.989009 19.2945 1.28206L10.2945 10.2821C10.0015 10.5751 9.52634 10.5751 9.23328 10.2821C8.94022 9.98901 8.94022 9.51387 9.23328 9.22081L11.832 6.62206C10.3821 5.66313 8.4632 5.82639 7.19611 7.01649C5.92901 8.20659 5.64593 10.1115 6.5122 11.6186C7.37848 13.1258 9.16697 13.84 10.8331 13.3441C12.4992 12.8482 13.6061 11.2723 13.5073 9.53675C13.484 9.12254 13.8009 8.76786 14.2152 8.74457C14.6294 8.72127 14.984 9.03816 15.0073 9.45238C15.1482 11.9105 13.5619 14.1363 11.1923 14.8052C8.8228 15.4742 6.30671 14.4066 5.14129 12.2377C3.97588 10.0688 4.47428 7.38143 6.33991 5.77468C8.20554 4.16794 10.9371 4.07355 12.9092 5.54769L15.042 3.41488C11.8053 0.727589 7.06393 0.910459 4.04383 3.83906C1.02373 6.76767 0.695138 11.5012 3.28162 14.819C5.8681 18.1368 10.5388 18.9731 14.1157 16.7588C17.6927 14.5445 19.0268 9.99097 17.2105 6.19644C17.0318 5.82261 17.1901 5.37476 17.5639 5.19613C17.9377 5.0175 18.3856 5.17574 18.5642 5.54956Z" fill="white"/>
+</svg>'],
+          ['label' => 'Electronic Warfare Suite', 'icon' => '<svg>...</svg>'],
+          ['label' => 'Radar Warning Receiver', 'icon' => '<svg>...</svg>'],
+          ['label' => 'Electronic Warfare Suite', 'icon' => '<svg>...</svg>'],
+          ['label' => 'Electronic Warfare Suite', 'icon' => '<svg>...</svg>'],
+
+        ];
+      @endphp
+      <x-feature-grid
+        heading="Systems"
+        subheading="Support"
+        :items="$features"
+
+      />
 
       @include('partials.content-single-vehicle')
     </main>

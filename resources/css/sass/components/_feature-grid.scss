@@ -1,0 +1,52 @@
+@use '../abstracts';
+
+.feature-grid {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(12rem, 1fr)); // Adjust 12rem to taste
+    gap: 1rem;
+    grid-auto-flow: row dense;
+    width: 100%;
+    @media (max-width: 1000px) {
+
+        grid-template-columns: repeat(1, minmax(min-content, 1fr));
+
+    }
+  }
+
+  &__card {
+    padding: 0.75rem 1rem;
+    border: 1px solid abstracts.$color-border;
+    border-radius: 0.5rem;
+    background-color: abstracts.$bg-card;
+    color: abstracts.$text-body;
+    transition: background-color 0.2s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+
+    // Allow long text to wrap (or truncate if you prefer)
+    white-space: normal; // or nowrap if you want truncation
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+
+  &__label {
+    font-weight: 600;
+    text-align: center;
+  }
+}

@@ -1,7 +1,6 @@
 // Brand colors
 $color-primary: #2e3a59; // Navy blue
 $color-secondary: #6c757d; // Muted gray
-$color-accent: #39e58c;
 $color-success: #198754;
 $color-warning: #ffc107;
 $color-error: #dc3545;
@@ -14,6 +13,8 @@ $color-dark: #161b22;
 
 $color-baby-blue: #94B2C7;
 $smoke-gray: #374151;
+$accent-color: $color-baby-blue;
+
 
 // Backgrounds
 $bg-body: $color-black;
@@ -27,5 +28,6 @@ $bg-alt: #eef1f5;
 $text-body: $color-light;
 $text-muted: #6c757d;
 $text-dark: $color-dark;
+$meta-heading-color: $color-baby-blue;
 
 

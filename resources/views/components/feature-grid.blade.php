@@ -1,0 +1,29 @@
+<div class="feature-grid">
+  @if ($heading)
+    <h2 class="feature-grid__heading">{{ $heading }}</h2>
+  @endif
+
+  @if ($subheading)
+    <h3 class="feature-grid__subheading">{{ $subheading }}</h3>
+  @endif
+
+  <div class="feature-grid__grid" style="--grid-cols: {{ $columns ?? 'auto-fit' }}">
+    @foreach ($items as $item)
+      @php
+        $icon = $item['icon'] ?? null;
+        $label = $item['label'] ?? '';
+      @endphp
+
+      <div class="feature-grid__card">
+        @if ($icon)
+          <div class="feature-grid__icon">
+            {!! $icon !!}
+          </div>
+        @endif
+        <div class="feature-grid__label">
+          {{ $label }}
+        </div>
+      </div>
+    @endforeach
+  </div>
+</div>

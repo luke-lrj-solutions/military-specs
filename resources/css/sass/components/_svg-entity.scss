@@ -4,5 +4,8 @@
 .svg-entity {
   svg {
     width: 100% !important;
+    * path, g {
+      stroke: abstracts.$accent-color !important;
+    }
   }
 }

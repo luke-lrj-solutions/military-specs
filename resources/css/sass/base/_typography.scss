@@ -9,12 +9,9 @@ body {
 }
 
 a {
-  color: abstracts.$color-accent;
+  color: abstracts.$text-body;
   text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 
@@ -24,10 +21,12 @@ h1, .h1 {
 
 h2, .h2 {
   font-size: clamp(1.25rem, 0.8088rem + 1.1765vw, 1.75rem);
+  margin-bottom: 1rem;
 }
 
 h3, .h3 {
   font-size: clamp(1.125rem, 0.7941rem + 0.8824vw, 1.5rem);
+  margin-bottom: 0.75rem;
 }
 
 h4, .h4 {
@@ -40,6 +39,10 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: clamp(1rem, 0.8897rem + 0.2941vw, 1.125rem);
+}
+
+p, td, th {
+  font-size: clamp(0.875rem, 0.7647rem + 0.2941vw, 1rem);
 }
 
 .key {

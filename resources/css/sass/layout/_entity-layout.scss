@@ -13,7 +13,8 @@
 
 .entity-sidebar {
   @extend .card;
-
+  display: grid;
+  gap: 1rem;
   &__image {
     margin-bottom: 1rem;
   }
@@ -22,4 +23,8 @@
 
 .entity-content {
   @extend .card;
+  display: grid;
+  gap: 48px;
 }
+
+
