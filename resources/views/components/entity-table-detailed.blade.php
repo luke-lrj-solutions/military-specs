@@ -24,7 +24,7 @@
           <td class="table__thumb">        @if (!empty($row['thumbnail']))
               {!! $row['thumbnail'] !!}
             @endif</td>
-          <td class="table__name link-hover-section">
+          <td class="table__name link-hover-section entity">
 
             <a class="" href="">{{ $row['name'] ?? '' }}</a>
           </td>

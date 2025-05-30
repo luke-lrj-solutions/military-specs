@@ -45,3 +45,19 @@ p, td, th {
   font-weight: 500;
 }
 
+.single-vehicle, .single-weapon, .single-munition {
+  h1 {
+    position: relative;
+    display: inline-block;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      background-color: abstracts.$entity-link-border-color;
+      height: 2px;
+      transition: 400ms;
+    }
+  }
+}

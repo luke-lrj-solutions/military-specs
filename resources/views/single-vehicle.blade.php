@@ -1,5 +1,5 @@
 @extends('layouts.app') {{-- This is CRITICAL --}}
 
 @section('content')
-  @include('layouts.single-object')
+  @include('layouts.single-entity')
 @endsection

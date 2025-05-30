@@ -35,7 +35,7 @@ main {
       bottom: -3px;
       left: 0;
       width: 10px;
-      background-color: abstracts.$accent-color;
+      background-color: abstracts.$taxonomy-link-border-color;
       height: 2px;
       transition: 400ms;
     }
@@ -54,6 +54,11 @@ main {
       &::after {
         width: 100%;
       }
+    }
+  }
+  &.entity {
+    a::after {
+      background-color: abstracts.$entity-link-border-color;
     }
   }
 }

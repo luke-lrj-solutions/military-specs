@@ -30,8 +30,8 @@
 
     <main class="entity-content">
 
+      <div class="title"><h1>{{ get_the_title() }}</h1></div>
 
-      <h1>{{ get_the_title() }}</h1>
       <div class="entity-section">
 
 
@@ -87,6 +87,8 @@
       @php
         $metaItems = [
           ['key' => 'Country', 'value' => 'United States'],
+          ['key' => 'Manufacturer', 'value' => 'Lockheed Martin'],
+          ['key' => 'Manufacturer', 'value' => 'Lockheed Martin'],
           ['key' => 'Manufacturer', 'value' => 'Lockheed Martin'],
         ];
       @endphp

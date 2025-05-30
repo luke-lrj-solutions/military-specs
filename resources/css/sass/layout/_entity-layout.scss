@@ -25,6 +25,7 @@
   @extend .card;
   display: grid;
   gap: 72px;
+  container-type: inline-size;
 }
 
 .entity-section {

@@ -3,8 +3,12 @@
 .meta-list {
   display: grid;
   gap: 2rem;
-  &.two-column {
-    grid-template-columns: repeat(2, 1fr);
+
+  @container (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr) !important;
+  }
+  @container (max-width: 450px) {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -15,12 +19,12 @@
   border-top: solid 1px abstracts.$color-border;
   min-width: 150px;
   a {
-    &::after {
-      background-color: abstracts.$taxonomy-link-border-color;
-    }
-    &::before {
-      background-color: abstracts.$link-baseline-border-color;
-    }
+    //&::after {
+    //  background-color: abstracts.$taxonomy-link-border-color;
+    //}
+    //&::before {
+    //  background-color: abstracts.$link-baseline-border-color;
+    //}
     &:hover {
       &::after {
         width: 100%;

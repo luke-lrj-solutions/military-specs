@@ -21,7 +21,7 @@
           </div>
         @endif
         <div class="feature-grid__label">
-          {{ $label }}
+          <p>{{ $label }}</p>
         </div>
       </div>
     @endforeach
