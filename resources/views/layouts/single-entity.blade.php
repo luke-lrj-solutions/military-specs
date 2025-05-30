@@ -30,7 +30,7 @@
 
     <main class="entity-content">
 
-      <div class="title"><h1>{{ get_the_title() }}</h1></div>
+      <div class="title"><h1>{{ get_the_title() }}{!! ' ' . get_field('nickname') !!}</h1></div>
 
       <div class="entity-section">
 
