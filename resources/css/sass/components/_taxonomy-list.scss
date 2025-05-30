@@ -1,15 +1,2 @@
 @use '../abstracts';
 
-.meta-list {
-  display: grid;
-  gap: 2rem;
-}
-
-.meta-item {
-  display: flex;
-  flex-flow: column nowrap;
-  padding-top: .5rem;
-  border-top: solid 2px abstracts.$color-border;
-  min-width: 150px;
-
-}

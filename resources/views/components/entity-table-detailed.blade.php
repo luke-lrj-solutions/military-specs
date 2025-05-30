@@ -12,9 +12,6 @@
     <table>
       <thead>
       <tr>
-        <th>Vehicle</th>
-        <th></th>
-        <th>Description</th>
         @foreach ($columns as $col)
           <th>{{ $col }}</th>
         @endforeach
@@ -22,14 +19,14 @@
       </thead>
       <tbody>
       @foreach ($rows as $row)
-        <tr>
+        <tr class="entity">
           {{-- Thumbnail & Name --}}
           <td class="table__thumb">        @if (!empty($row['thumbnail']))
               {!! $row['thumbnail'] !!}
             @endif</td>
-          <td class="table__name">
+          <td class="table__name link-hover-section">
 
-            <a href="">{{ $row['name'] ?? '' }}</a>
+            <a class="" href="">{{ $row['name'] ?? '' }}</a>
           </td>
 
           {{-- Description --}}
@@ -37,7 +34,7 @@
 
           {{-- Dynamic fields --}}
           @foreach ($row['fields'] ?? [] as $field)
-            <td>{{ $field }}</td>
+            <td><a class="taxonomy" href=""></a>{{ $field }}</td>
           @endforeach
         </tr>
       @endforeach

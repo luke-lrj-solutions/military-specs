@@ -89,49 +89,7 @@
 
     }
   }
-  &__name {
-    a {
-      color: abstracts.$text-body;
-      text-decoration: none;
-      position: relative;
-      transition: 400ms;
 
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 10px;
-        background-color: abstracts.$accent-color;
-        height: 3px;
-        transition: 400ms;
-      }
-      &:hover {
-        color: abstracts.$accent-color;
-        &::after {
-          width: 100%;
-        }
-      }
-    }
-  }
-  tr:hover {
-    .table__name {
-      a {
-        &::after {
-
-          width: 30px;
-
-        }
-        &:hover {
-          color: abstracts.$accent-color;
-          &::after {
-            width: 100%;
-          }
-          //text-decoration: underline;
-        }
-      }
-    }
-  }
   &__action-button {
     position: relative;
     z-index: 100;

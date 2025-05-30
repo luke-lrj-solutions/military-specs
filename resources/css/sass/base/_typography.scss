@@ -8,12 +8,6 @@ body {
   font-size: 1rem;
 }
 
-a {
-  color: abstracts.$text-body;
-  text-decoration: none;
-
-}
-
 
 h1, .h1 {
   font-size: clamp(1.5rem, 1.0588rem + 1.1765vw, 2rem);
@@ -21,12 +15,13 @@ h1, .h1 {
 
 h2, .h2 {
   font-size: clamp(1.25rem, 0.8088rem + 1.1765vw, 1.75rem);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 h3, .h3 {
   font-size: clamp(1.125rem, 0.7941rem + 0.8824vw, 1.5rem);
   margin-bottom: 0.75rem;
+  font-weight: 300;
 }
 
 h4, .h4 {
@@ -49,3 +44,4 @@ p, td, th {
   color: abstracts.$color-baby-blue;
   font-weight: 500;
 }
+

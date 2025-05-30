@@ -3,7 +3,7 @@
   $file = $file ?? null;
   $class = $class ?? '';
   $strokeColor = $strokeColor ?? '#f8f9fa'; // Default to black if not provided
-  $fillColor = '#fff' ?? '#161b22'; // Default to black if not provided
+  $fillColor = '#fff' ?? '#fff'; // Default to black if not provided
 
 @endphp
 

@@ -13,7 +13,7 @@ $color-dark: #161b22;
 
 $color-baby-blue: #94B2C7;
 $smoke-gray: #374151;
-$accent-color: $color-baby-blue;
+$accent-color: #1A94E5;
 
 
 // Backgrounds
@@ -30,4 +30,8 @@ $text-muted: #6c757d;
 $text-dark: $color-dark;
 $meta-heading-color: $color-baby-blue;
 
+// Area specific
 
+$link-baseline-border-color: $color-border;
+$entity-link-border-color: $accent-color;
+$taxonomy-link-border-color: $color-baby-blue;

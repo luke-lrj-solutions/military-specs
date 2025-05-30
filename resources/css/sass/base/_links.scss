@@ -1,0 +1,60 @@
+@use '../abstracts';
+
+main {
+  a {
+    color: abstracts.$text-body;
+    text-decoration: none;
+  }
+}
+
+
+.entity:hover {
+    a {
+      &::after {
+        width: 50%;
+      }
+    }
+}
+
+
+.link-hover-section {
+  &:hover a {
+    &::after {
+      width: 50%;
+    }
+  }
+  a {
+    color: abstracts.$text-body;
+    text-decoration: none;
+    position: relative;
+    transition: 400ms;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 10px;
+      background-color: abstracts.$accent-color;
+      height: 2px;
+      transition: 400ms;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      background-color: abstracts.$color-border;
+      height: 2px;
+      transition: 400ms;
+    }
+    &:hover {
+      color: abstracts.$accent-color;
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+

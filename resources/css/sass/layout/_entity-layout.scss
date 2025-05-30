@@ -24,7 +24,11 @@
 .entity-content {
   @extend .card;
   display: grid;
-  gap: 48px;
+  gap: 72px;
 }
 
+.entity-section {
+  display: grid;
+  gap: 2rem;
+}
 
