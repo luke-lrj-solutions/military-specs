@@ -24,12 +24,16 @@
   <div class="timeline__track">
     <div class="timeline__progress" style="width: {{ $currentPercent }}%;"></div>
 
-    @foreach($allPoints as $year)
+    @foreach($allPoints as $index => $year)
       @php
         $percent = ( (intval($year) - intval($startDate)) / (intval($end) - intval($startDate)) ) * 100;
       @endphp
-      <div class="timeline__plip @if($year == $currentYear) timeline__plip--current @endif" style="left: {{ $percent }}%">
+      <div class="timeline__plip @if($year == $currentYear) timeline__plip--current @endif"
+           style="left: {{ $percent }}%"
+           data-index="{{ $index }}">
         <span class="timeline__label">{{ $year }}</span>
+        <span class="timeline__tooltip">Entered service in {{ $year }}</span> <!-- Example tooltip text -->
+
       </div>
     @endforeach
   </div>
