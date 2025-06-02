@@ -107,10 +107,10 @@
     &__track {
       width: 2px;
       height: auto;
-      min-height: 300px; // Adjust as needed
-      margin: 0 auto;
+      margin-left: 5px;
       display: flex;
       flex-direction: column;
+      gap: 3rem;
       align-items: center;
       justify-content: space-between;
       position: relative; // ensure child absolute elements align
@@ -152,18 +152,19 @@
         left: calc(100% + 8px);
         transform: none;
       }
-      &__tooltip {
+      .timeline__tooltip {
         position: relative;
-        bottom: auto;
-        left: auto;
+        top: -7px;
+        left: calc(100% + 8px);;
         transform: none;
         margin-top: 0.25rem;
-        opacity: 1;
-        pointer-events: auto;
+        opacity: 1 !important; // Always visible
+        pointer-events: auto !important; // Always interactive
         background: none;
         color: abstracts.$text-body;
         padding: 0;
         font-size: 0.75rem;
+
         &::after {
           display: none;
         }
