@@ -79,7 +79,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 0;
+      gap: 1rem; // NEW: add gap instead of margin
       position: relative; // ensure child absolute elements align
     }
 
@@ -100,7 +100,7 @@
         bottom: auto;
         left: auto;
         transform: none; // remove transforms when in flow
-        margin: 1rem 0; // spacing
+        // REMOVE margin: 1rem 0; — spacing handled by gap now
       }
     }
 
@@ -109,7 +109,7 @@
       top: auto;
       left: auto !important;
       transform: none !important;
-      margin: 1rem 0; // spacing
+      // REMOVE margin: 1rem 0; — spacing handled by gap now
 
       .timeline__label {
         position: relative;
