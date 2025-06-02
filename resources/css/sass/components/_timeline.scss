@@ -1,0 +1,72 @@
+@use '../abstracts';
+
+
+.timeline {
+  position: relative;
+  width: 100%;
+  margin: 2rem 0;
+
+  &__track {
+    position: relative;
+    height: 4px;
+    background: #4a4a4a;
+    border-radius: 2px;
+    overflow: visible;
+  }
+
+  &__progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #3b82f6;
+    z-index: 1;
+
+    .timeline__plip--current {
+      position: absolute;
+      top: -8px;
+      right: 0; // stays at the end of progress bar
+      transform: translateX(50%);
+      width: 20px;
+      height: 20px;
+      background: #3b82f6;
+      border-radius: 50%;
+      border: solid 4px abstracts.$bg-card;
+      z-index: 2;
+
+      .timeline__label {
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        color: #ccc;
+        white-space: nowrap;
+        z-index: 3;
+      }
+    }
+  }
+
+  &__plip {
+    position: absolute;
+    top: -8px;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: #999;
+    border-radius: 50%;
+    z-index: 2;
+    border: solid 4px abstracts.$bg-card;
+
+    .timeline__label {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: #ccc;
+      white-space: nowrap;
+      z-index: 3;
+    }
+  }
+}

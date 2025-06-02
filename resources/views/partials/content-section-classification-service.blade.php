@@ -38,3 +38,8 @@
   :items="$metaItems"
 />
 
+<x-timeline
+  :startDate="1975"
+  :endDate="2060"
+  :checkpoints="['1980', '2000', '2010']"
+/>
