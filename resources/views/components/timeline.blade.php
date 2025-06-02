@@ -7,18 +7,24 @@
 @php
   $currentYear = now()->year;
   $end = $endDate ?? $currentYear;
-  $allPoints = collect([$startDate])->merge($checkpoints)->push($end)->sort();
-  $currentPercent = ( (intval($currentYear) - intval($startDate)) / (intval($end) - intval($startDate)) ) * 100;
 
+  // Build the timeline points: start, checkpoints, end, currentYear (if in range)
+  $allPoints = collect([$startDate, $end])
+      ->merge($checkpoints)
+      ->when($currentYear >= $startDate && $currentYear <= $end, fn($points) => $points->push($currentYear))
+      ->unique()
+      ->sort()
+      ->values(); // ensure reindexing
+
+  // Progress % for horizontal layout
+  $currentPercent = ( (intval($currentYear) - intval($startDate)) / (intval($end) - intval($startDate)) ) * 100;
 @endphp
 
 <div class="timeline">
   <div class="timeline__track">
-    <div class="timeline__progress" style="width: {{ $currentPercent }}%;">
-      <div class="timeline__plip timeline__plip--current">
-        <span class="timeline__label">{{ $currentYear }}</span>
-      </div>
-    </div>    @foreach($allPoints as $year)
+    <div class="timeline__progress" style="width: {{ $currentPercent }}%;"></div>
+
+    @foreach($allPoints as $year)
       @php
         $percent = ( (intval($year) - intval($startDate)) / (intval($end) - intval($startDate)) ) * 100;
       @endphp

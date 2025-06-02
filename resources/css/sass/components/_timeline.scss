@@ -1,6 +1,5 @@
 @use '../abstracts';
 
-
 .timeline {
   position: relative;
   width: 100%;
@@ -8,8 +7,8 @@
 
   &__track {
     position: relative;
-    height: 4px;
-    background: #4a4a4a;
+    height: 2px;
+    background: abstracts.$color-border;
     border-radius: 2px;
     overflow: visible;
   }
@@ -19,17 +18,17 @@
     top: 0;
     left: 0;
     height: 100%;
-    background: #3b82f6;
+    background: abstracts.$accent-color;
     z-index: 1;
 
     .timeline__plip--current {
       position: absolute;
-      top: -8px;
-      right: 0; // stays at the end of progress bar
+      top: -9px;
+      right: 0;
       transform: translateX(50%);
       width: 20px;
       height: 20px;
-      background: #3b82f6;
+      background: abstracts.$accent-color;
       border-radius: 50%;
       border: solid 4px abstracts.$bg-card;
       z-index: 2;
@@ -40,7 +39,7 @@
         left: 50%;
         transform: translateX(-50%);
         font-size: 0.75rem;
-        color: #ccc;
+        color: abstracts.$text-body;
         white-space: nowrap;
         z-index: 3;
       }
@@ -49,11 +48,11 @@
 
   &__plip {
     position: absolute;
-    top: -8px;
+    top: -9px;
     transform: translateX(-50%);
     width: 20px;
     height: 20px;
-    background: #999;
+    background: abstracts.$color-baby-blue;
     border-radius: 50%;
     z-index: 2;
     border: solid 4px abstracts.$bg-card;
@@ -67,6 +66,57 @@
       color: #ccc;
       white-space: nowrap;
       z-index: 3;
+    }
+  }
+
+  @container (max-width: 450px) {
+    &__track {
+      width: 2px;
+      height: auto;
+      min-height: 300px; // Adjust as needed
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      position: relative; // ensure child absolute elements align
+    }
+
+    &__progress {
+      width: 2px !important;
+      height: 100%;
+      background: abstracts.$accent-color;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+
+      .timeline__plip--current {
+        position: relative; // key: make current plip relative inside progress
+        right: auto;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        transform: none; // remove transforms when in flow
+        margin: 1rem 0; // spacing
+      }
+    }
+
+    &__plip {
+      position: relative !important; // key: relative to the flow of the flex column
+      top: auto;
+      left: auto !important;
+      transform: none !important;
+      margin: 1rem 0; // spacing
+
+      .timeline__label {
+        position: relative;
+        top: -7px;
+        left: calc(100% + 8px);
+        transform: none;
+      }
     }
   }
 }
