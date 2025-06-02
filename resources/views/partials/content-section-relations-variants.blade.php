@@ -24,8 +24,7 @@
 
 
 <x-entity-table-detailed
-  heading=""
-  subheading="Variants"
+  heading="Variants"
   :columns="$columns"
   :rows="$rows"
 />

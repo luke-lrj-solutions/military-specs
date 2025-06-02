@@ -19,7 +19,7 @@
   ];
 @endphp
 <x-feature-grid
-  heading="Support"
+  heading="Mobility"
   :items="$features"
 
 />

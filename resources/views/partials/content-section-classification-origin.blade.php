@@ -1,15 +1,14 @@
 @php
   $metaItems = [
-    ['key' => 'Country', 'value' => 'United States'],
-    ['key' => 'Manufacturer', 'value' => 'Lockheed Martin'],
-    ['key' => 'Manufacturer', 'value' => 'Lockheed Martin'],
-    ['key' => 'Manufacturer', 'value' => 'Lockheed Martin'],
+    ['key' => 'Country', 'value' => 'United States', 'link' => ''],
+    ['key' => 'Manufacturer', 'value' => 'Lockheed Martin', 'link' => ''],
+    ['key' => 'Manufacturer', 'value' => 'Lockheed Martin', 'link' => ''],
+    ['key' => 'Manufacturer', 'value' => 'Lockheed Martin', 'link' => ''],
   ];
 @endphp
 
 <x-meta-list
-  heading=""
-  subheading="Origin"
+  heading="Origin"
   columns="3"
   :items="$metaItems"
 />

@@ -1,10 +1,6 @@
 <div class="feature-grid">
   @if ($heading)
-    <h2 class="feature-grid__heading">{{ $heading }}</h2>
-  @endif
-
-  @if ($subheading)
-    <h3 class="feature-grid__subheading">{{ $subheading }}</h3>
+    <h3 class="feature-grid__subheading">{{ $heading }}</h3>
   @endif
 
   <div class="feature-grid__grid" style="--grid-cols: {{ $columns ?? 'auto-fit' }}">

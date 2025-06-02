@@ -1,10 +1,8 @@
 {{-- resources/views/components/entity-table.blade.php --}}
 <div class="table">
+
   @if($heading)
-  <h2 class="table__heading">{{ $heading }}</h2>
-  @endif
-  @if($subheading)
-  <h3 class="table__subheading">{{ $subheading }}</h3>
+  <h3 class="table__subheading">{{ $heading }}</h3>
   @endif
 
   <div class="table-wrapper" x-data x-init="$el.classList.toggle('no-overflow', $el.scrollWidth <= $el.clientWidth)">

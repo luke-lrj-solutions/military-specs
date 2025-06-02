@@ -1,6 +1,5 @@
 <x-information-table
-  heading=""
-  subheading="Vessels"
+  heading="Vessels In Class"
   :columns="['Name', 'Pennant/Hull No.', 'Commissioned', 'Decommissioned']"
   :rows="[
           ['Daring', 'D45', '2012', 'In Service'],

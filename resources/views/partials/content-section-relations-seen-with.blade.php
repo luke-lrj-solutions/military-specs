@@ -24,8 +24,7 @@
 
 
 <x-entity-table-detailed
-  heading=""
-  subheading="Often Seen With"
+  heading="Often Seen With"
   :columns="$columns"
   :rows="$rows"
 />

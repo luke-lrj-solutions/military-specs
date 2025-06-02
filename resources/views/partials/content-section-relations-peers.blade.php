@@ -25,8 +25,7 @@
 
 
 <x-entity-table-detailed
-  heading=""
-  subheading="Comparable Peers"
+  heading="Comparable Peers"
   :columns="$columns"
   :rows="$rows"
 />

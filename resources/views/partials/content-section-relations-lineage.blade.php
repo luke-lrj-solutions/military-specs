@@ -1,13 +1,12 @@
 @php
   $metaItems = [
-    ['key' => 'Predecessor', 'value' => 'F-11 Starfighter'],
-    ['key' => 'Successor', 'value' => 'F-35 Lightening'],
+    ['key' => 'Predecessor', 'value' => 'F-11 Starfighter', 'link' => ''],
+    ['key' => 'Successor', 'value' => 'F-35 Lightening', 'link' => ''],
   ];
 @endphp
 
 <x-meta-list
-  heading=""
-  subheading="Lineage"
+  heading="Lineage"
   columns="2"
   :items="$metaItems"
 />

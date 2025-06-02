@@ -1,6 +1,6 @@
 <x-information-table
-  heading=""
-  subheading="Names"
+  heading="Names"
+  subheading="Nmes"
   :columns="['Reference', 'Name']"
   :rows="[
           ['Nickname', 'Fighting Falcon'],

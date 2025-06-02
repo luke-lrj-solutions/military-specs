@@ -21,6 +21,7 @@
       <div class="entity-section">
 
         @include('partials.content-section-classification')
+        @include('partials.content-section-crew')
         @include('partials.content-section-relations')
         @include('partials.content-section-armaments')
         @include('partials.content-section-systems')

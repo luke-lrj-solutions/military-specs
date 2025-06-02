@@ -22,8 +22,7 @@
 @endphp
 
 <x-entity-table-detailed
-  heading=""
-  subheading="Bombs"
+  heading="Bombs"
   :columns="$columns"
   :rows="$rows"
 />
