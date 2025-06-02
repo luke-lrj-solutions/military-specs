@@ -24,12 +24,12 @@
 .entity-content {
   @extend .card;
   display: grid;
-  gap: 72px;
+  gap: 2rem;
   container-type: inline-size;
 }
 
 .entity-section {
   display: grid;
-  gap: 2rem;
+  gap: 3rem;
 }
 

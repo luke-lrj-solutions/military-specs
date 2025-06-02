@@ -11,19 +11,21 @@
   <div class="table-wrapper">
     <table>
       <thead>
-      <tr>
-        @foreach ($columns as $col)
-          <th>{{ $col }}</th>
-        @endforeach
-      </tr>
+        <tr>
+          @foreach ($columns as $col)
+            <th>{{ $col }}</th>
+          @endforeach
+        </tr>
       </thead>
       <tbody>
       @foreach ($rows as $row)
         <tr class="entity">
           {{-- Thumbnail & Name --}}
-          <td class="table__thumb">        @if (!empty($row['thumbnail']))
+          <td class="table__thumb">
+            @if (!empty($row['thumbnail']))
               {!! $row['thumbnail'] !!}
-            @endif</td>
+            @endif
+          </td>
           <td class="table__name link-hover-section entity">
 
             <a class="" href="">{{ $row['name'] ?? '' }}</a>
