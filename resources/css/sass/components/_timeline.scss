@@ -60,6 +60,9 @@
       max-width: 100px;
       white-space: normal;
       transition: color 200ms ease;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
     }
     &--current {
       z-index: 1;
@@ -76,7 +79,7 @@
 
 
 
-    .timeline__tooltip {
+    .tooltip-text {
       position: absolute;
       bottom: calc(100% + 0.75rem);
       background: abstracts.$bg-card;
@@ -99,7 +102,7 @@
         background-color: abstracts.$accent-color;
         border-color: abstracts.$color-white;
       }
-      .timeline__tooltip {
+      .tooltip-text {
         opacity: 1;
         pointer-events: auto;
 
@@ -153,7 +156,7 @@
 
     &__plip, &__plip--current {
       position: relative !important; // key: relative to the flow of the flex column
-      top: unset;
+      top: unset !important;
       left: unset !important;
       transform: none !important;
       display: flex;
@@ -167,14 +170,16 @@
       }
       &--current {
         .plip-circle {
-
-        background-color: abstracts.$accent-color;
+          background-color: abstracts.$accent-color;
         }
 
         .timeline__label {
           color: abstracts.$accent-color;
           bottom: unset !important;
         }
+      }
+      &:hover .tooltip-text {
+        color: abstracts.$accent-color;
       }
       .timeline__label {
         position: relative;
@@ -183,9 +188,17 @@
         transform: none !important;
         max-width: unset !important;
         text-align: left;
+
+
       }
-      .timeline__tooltip {
-        position: relative;
+      .tooltip-container {
+        position: unset;
+        .plip-circle {
+          top: 4px !important;
+        }
+      }
+      .tooltip-text {
+        position: relative !important;
         top: unset !important;
         left: unset !important;
         bottom: unset !important;
@@ -193,9 +206,9 @@
         opacity: 1 !important; // Always visible
         pointer-events: auto !important; // Always interactive
         padding: 0 !important;
-        background: none;
+        background: none !important;
         color: abstracts.$text-body;
-        border: none;
+        border: none !important;
         font-size: 0.75rem;
         display: block;
         white-space: normal;

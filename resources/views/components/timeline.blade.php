@@ -57,10 +57,14 @@
         <div class="timeline__plip {{ $positionClass }} @if($year == $currentYear) timeline__plip--current @endif @if($tooltip) has-tooltip @endif"
              style="left: @if($year == $currentYear) {{ $percent }}% @else {{ $leftClamp }} @endif; --plip-left: {{ $percent }}%;"
              data-index="{{ $index }}">
-          <div class="plip-circle"></div>
-          <span class="timeline__label">@if($year == $currentYear) <b>[{{$year}}]</b> @else <b>{{ $year }}</b><br>{{ $label }}@endif</span>
           @if($tooltip)
-            <span class="timeline__tooltip">{{ $tooltip }}</span>
+            <x-tooltip :text="$tooltip" position="top">
+              <div class="plip-circle"></div>
+              <span class="timeline__label">@if($year == $currentYear) <b>[{{$year}}]</b> @else <b>{{ $year }}</b>{{ $label }}@endif</span>
+            </x-tooltip>
+          @else
+            <div class="plip-circle"></div>
+            <span class="timeline__label">{{ $year }}<br>{{ $label }}</span>
           @endif
 
       </div>
