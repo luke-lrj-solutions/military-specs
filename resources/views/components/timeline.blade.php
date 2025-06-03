@@ -27,6 +27,9 @@
 
 <div class="timeline">
   <div class="timeline__track">
+    <div class="timeline__track--path">
+
+    </div>
     <div class="timeline__progress" style="width: {{ $currentPercent }}%;"></div>
 
     @foreach($allYears as $index => $year)
@@ -49,15 +52,19 @@
         $minPixelGap = 75;
         $leftClamp = "clamp({$percent}%, " . ($minPixelGap * $index) . "px, 100%)";
       @endphp
-      
-      <div class="timeline__plip {{ $positionClass }} @if($year == $currentYear) timeline__plip--current @endif"
-           style="left: @if($year == $currentYear) {{ $percent }}% @else {{ $leftClamp }} @endif; --plip-left: {{ $percent }}%;"
-           data-index="{{ $index }}">
-        <span class="timeline__label">@if($year == $currentYear) <b>[{{$year}}]</b> @else <b>{{ $year }}</b><br>{{ $label }}@endif</span>
-        @if($tooltip)
-          <span class="timeline__tooltip">{{ $tooltip }}</span>
-        @endif
+
+
+        <div class="timeline__plip {{ $positionClass }} @if($year == $currentYear) timeline__plip--current @endif"
+             style="left: @if($year == $currentYear) {{ $percent }}% @else {{ $leftClamp }} @endif; --plip-left: {{ $percent }}%;"
+             data-index="{{ $index }}">
+          <div class="plip-circle"></div>
+          <span class="timeline__label">@if($year == $currentYear) <b>[{{$year}}]</b> @else <b>{{ $year }}</b><br>{{ $label }}@endif</span>
+          @if($tooltip)
+            <span class="timeline__tooltip">{{ $tooltip }}</span>
+          @endif
+
       </div>
+
     @endforeach
   </div>
 </div>

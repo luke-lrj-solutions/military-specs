@@ -5,8 +5,11 @@
   width: 100%;
   margin: 2rem 0 5rem 0;
   padding: 0 2rem;
-
   &__track {
+    position: relative;
+
+  }
+  &__track--path {
     position: relative;
     height: 2px;
     background: abstracts.$color-border;
@@ -20,7 +23,7 @@
     left: 0;
     height: 100%;
     background: abstracts.$accent-color;
-    z-index: 1;
+    z-index: 0;
 
 
   }
@@ -31,27 +34,35 @@
     position: absolute;
     top: -9px;
     transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background: abstracts.$color-baby-blue;
-    border-radius: 50%;
     z-index: 2;
-    border: solid 4px abstracts.$bg-card;
     transition: all 200ms ease;
 
+    .plip-circle {
+      width: 20px;
+      height: 20px;
+      background: abstracts.$color-baby-blue;
+      border: solid 4px abstracts.$bg-card;
+      overflow: hidden;
+      border-radius: 50%;
+      z-index: 2;
+      transition: all 200ms ease;
+    }
 
     &--current {
-      background: abstracts.$accent-color;
       z-index: 1;
+
+      .plip-circle {
+        background: abstracts.$accent-color;
+      }
       .timeline__label {
         top: unset !important;
-        bottom: 20px;
+        bottom: 30px;
       }
     }
 
     .timeline__label {
       position: absolute;
-      top: 20px;
+      top: 30px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 0.75rem;
@@ -81,9 +92,12 @@
       white-space: pre;
     }
     &:hover {
-      background-color: abstracts.$accent-color;
-      border-color: abstracts.$color-white;
+
       z-index: 2;
+      .plip-circle {
+        background-color: abstracts.$accent-color;
+        border-color: abstracts.$color-white;
+      }
       .timeline__tooltip {
         opacity: 1;
         pointer-events: auto;
@@ -113,7 +127,12 @@
 
 
   @container (max-width: 450px) {
+
     &__track {
+      position: relative;
+
+    }
+    &__track--path {
       width: 2px;
       height: auto;
       margin-left: 5px;
@@ -124,6 +143,7 @@
       justify-content: space-between;
       position: relative; // ensure child absolute elements align
     }
+
 
     &__progress {
       width: 2px !important;
