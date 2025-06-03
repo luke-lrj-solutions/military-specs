@@ -4,20 +4,9 @@
       'key' => 'Status',
       'value' => 'In Service',
       'link' => '',
-      'span' => ''
-     ],
-  ];
-@endphp
-
-<x-meta-list
-  heading="Service"
-  columns="1"
-  :items="$metaItems"
-/>
-
-@php
-  $metaItems = [
-    [
+      'span' => '2'
+    ],
+     [
       'key' => 'Duration (Current)',
       'value' => '27 Years',
       'link' => '',
@@ -29,19 +18,6 @@
       'link' => '',
       'span' => ''
     ],
-
-  ];
-@endphp
-
-<x-meta-list
-  heading=""
-  columns="2"
-  :items="$metaItems"
-/>
-
-
-@php
-  $metaItems = [
     [
       'key' => 'Entered Service',
       'value' => '1998',
@@ -58,13 +34,18 @@
 @endphp
 
 <x-meta-list
-  heading=""
+  heading="Service"
   columns="2"
   :items="$metaItems"
 />
 
+
+@php
+  $timeline = get_field('timeline'); // Assuming this is your ACF repeater or array field
+@endphp
+
 <x-timeline
   :startDate="1975"
   :endDate="2060"
-  :checkpoints="['1980', '2000', '2010']"
+  :timeline="$timeline"
 />
