@@ -28,12 +28,11 @@
       @php
         $percent = ( (intval($year) - intval($startDate)) / (intval($end) - intval($startDate)) ) * 100;
       @endphp
-      <div class="timeline__plip @if($year == $currentYear) timeline__plip--current @endif"
-           style="left: {{ $percent }}%"
+      <div class="timeline__plip @if($year == $currentYear) timeline__plip--current @endif @if($percent > 50) timeline__plip--right @endif"
+           style="left: {{ $percent }}%;"
            data-index="{{ $index }}">
         <span class="timeline__label">{{ $year }}</span>
-        <span class="timeline__tooltip">Entered service in {{ $year }}</span> <!-- Example tooltip text -->
-
+        <span class="timeline__tooltip">Entered service in {{ $year }}</span>
       </div>
     @endforeach
   </div>
