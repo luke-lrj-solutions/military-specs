@@ -22,19 +22,21 @@
       ->values();
 
   // Progress % for horizontal layout
-  $currentPercent = ( (intval($currentYear) - intval($startDate)) / (intval($end) - intval($startDate)) ) * 100;
+  $minPixelGap = 75;
+  $currentIndex = $allYears->search($currentYear);
+  $currentPercent = ((intval($currentYear) - intval($startDate)) / (intval($end) - intval($startDate))) * 100;
+  $progressClamp = "clamp({$currentPercent}%, " . ($minPixelGap * $currentIndex) . "px, 100%)";
 @endphp
 
 <div class="timeline">
   <div class="timeline__track">
-    <div class="timeline__track--path">
+    <div class="timeline__track--path"></div>
 
-    </div>
-    <div class="timeline__progress" style="width: {{ $currentPercent }}%;"></div>
+    <div class="timeline__progress" style="--progress-end: {{ $progressClamp }};"></div>
 
     @foreach($allYears as $index => $year)
       @php
-        $percent = ( (intval($year) - intval($startDate)) / (intval($end) - intval($startDate)) ) * 100;
+        $percent = ((intval($year) - intval($startDate)) / (intval($end) - intval($startDate))) * 100;
         $data = $timelineData->get($year, ['label' => $year, 'tooltip' => null]);
         $label = $data['label'] ?? $year;
         $tooltip = $data['tooltip'] ?? null;
@@ -49,26 +51,22 @@
         }
 
         // Apply a minimum spacing between plips
-        $minPixelGap = 75;
         $leftClamp = "clamp({$percent}%, " . ($minPixelGap * $index) . "px, 100%)";
       @endphp
 
-
-        <div class="timeline__plip {{ $positionClass }} @if($year == $currentYear) timeline__plip--current @endif @if($tooltip) has-tooltip @endif"
-             style="left: @if($year == $currentYear) {{ $percent }}% @else {{ $leftClamp }} @endif; --plip-left: {{ $percent }}%;"
-             data-index="{{ $index }}">
-          @if($tooltip)
-            <x-tooltip :text="$tooltip" position="top">
-              <div class="plip-circle"></div>
-              <span class="timeline__label">@if($year == $currentYear) <b>[{{$year}}]</b> @else <b>{{ $year }}</b>{{ $label }}@endif</span>
-            </x-tooltip>
-          @else
+      <div class="timeline__plip {{ $positionClass }} @if($year == $currentYear) timeline__plip--current @endif @if($tooltip) has-tooltip @endif"
+           style="left: {{ $leftClamp }}; --plip-left: {{ $percent }}%;"
+           data-index="{{ $index }}">
+        @if($tooltip)
+          <x-tooltip :text="$tooltip" position="top">
             <div class="plip-circle"></div>
-            <span class="timeline__label">{{ $year }}<br>{{ $label }}</span>
-          @endif
-
+            <span class="timeline__label">@if($year == $currentYear) <b>[{{$year}}]</b> @else <b>{{ $year }}</b>{{ $label }}@endif</span>
+          </x-tooltip>
+        @else
+          <div class="plip-circle"></div>
+          <span class="timeline__label">{{ $year }}<br>{{ $label }}</span>
+        @endif
       </div>
-
     @endforeach
   </div>
 </div>
