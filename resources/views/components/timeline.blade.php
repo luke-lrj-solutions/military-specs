@@ -25,7 +25,7 @@
   $minPixelGap = 75;
   $currentIndex = $allYears->search($currentYear);
   $currentPercent = ((intval($currentYear) - intval($startDate)) / (intval($end) - intval($startDate))) * 100;
-  $progressClamp = "clamp({$currentPercent}%, " . ($minPixelGap * $currentIndex) . "px, 100%)";
+  $progressClamp = "clamp({$currentPercent}%, 0px , 100%)";
 @endphp
 
 <div class="timeline">
@@ -55,7 +55,7 @@
       @endphp
 
       <div class="timeline__plip {{ $positionClass }} @if($year == $currentYear) timeline__plip--current @endif @if($tooltip) has-tooltip @endif"
-           style="left: {{ $leftClamp }}; --plip-left: {{ $percent }}%;"
+           style="left: @if($year == $currentYear) {{ $percent }}% @else {{ $leftClamp }} @endif;; --plip-left: {{ $percent }}%;"
            data-index="{{ $index }}">
         @if($tooltip)
           <x-tooltip :text="$tooltip" position="top">
