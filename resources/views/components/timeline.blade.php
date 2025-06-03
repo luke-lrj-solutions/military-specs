@@ -51,9 +51,9 @@
       @endphp
 
       <div class="timeline__plip {{ $positionClass }} @if($year == $currentYear) timeline__plip--current @endif"
-           style="left: {{ $leftClamp }}; --plip-left: {{ $percent }}%;"
+           style="left: @if($year == $currentYear) {{ $percent }}% @else {{ $leftClamp }} @endif; --plip-left: {{ $percent }}%;"
            data-index="{{ $index }}">
-        <span class="timeline__label">{{ $year }}<br>{{ $label }}</span>
+        <span class="timeline__label">@if($year == $currentYear) Current Year <br> <b>{{$year}}</b> @else <b>{{ $year }}</b><br>{{ $label }}@endif</span>
         @if($tooltip)
           <span class="timeline__tooltip">{{ $tooltip }}</span>
         @endif
