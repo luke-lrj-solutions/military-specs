@@ -35,7 +35,7 @@
     top: -9px;
     transform: translateX(-50%);
     z-index: 2;
-    transition: all 200ms ease;
+    transition: background-color 200ms ease;
 
     .plip-circle {
       width: 20px;
@@ -45,21 +45,8 @@
       overflow: hidden;
       border-radius: 50%;
       z-index: 2;
-      transition: all 200ms ease;
+      transition: background-color 200ms ease;
     }
-
-    &--current {
-      z-index: 1;
-
-      .plip-circle {
-        background: abstracts.$accent-color;
-      }
-      .timeline__label {
-        top: unset !important;
-        bottom: 30px;
-      }
-    }
-
     .timeline__label {
       position: absolute;
       top: 30px;
@@ -72,8 +59,22 @@
       text-align: center;
       max-width: 100px;
       white-space: normal;
-      transition: 200ms;
+      transition: color 200ms ease;
     }
+    &--current {
+      z-index: 1;
+
+      .plip-circle {
+        background: abstracts.$accent-color;
+      }
+      .timeline__label {
+        top: unset !important;
+        bottom: 30px;
+        color: abstracts.$accent-color;
+      }
+    }
+
+
 
     .timeline__tooltip {
       position: absolute;
@@ -127,21 +128,15 @@
 
 
   @container (max-width: 450px) {
-
+    padding: 0;
     &__track {
       position: relative;
-
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 2rem;
     }
     &__track--path {
-      width: 2px;
-      height: auto;
-      margin-left: 5px;
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      align-items: center;
-      justify-content: space-between;
-      position: relative; // ensure child absolute elements align
+      display: none;
     }
 
 
@@ -151,42 +146,56 @@
       background: abstracts.$color-border;
       position: absolute;
       top: 0;
-      left: 50%;
+      left: 10px;
       transform: translateX(-50%);
       z-index: 1;
     }
 
-    &__plip {
+    &__plip, &__plip--current {
       position: relative !important; // key: relative to the flow of the flex column
-      top: auto;
-      left: auto !important;
+      top: unset;
+      left: unset !important;
       transform: none !important;
-      background-color: abstracts.$color-baby-blue;
+      display: flex;
+      flex-flow: column nowrap;
+      padding: 0.1rem 0 0 2rem;
+      .plip-circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+      }
       &--current {
+        .plip-circle {
+
         background-color: abstracts.$accent-color;
+        }
+
         .timeline__label {
           color: abstracts.$accent-color;
+          bottom: unset !important;
         }
       }
       .timeline__label {
         position: relative;
-        top: -7px;
-        left: calc(100% + 8px);
-        transform: none;
+        top: unset !important;
+        left: unset !important;
+        transform: none !important;
+        max-width: unset !important;
+        text-align: left;
       }
       .timeline__tooltip {
         position: relative;
-        top: -7px;
-        left: calc(100% + 8px);;
-        transform: none;
-        margin-top: 0.25rem;
+        top: unset !important;
+        left: unset !important;
+        bottom: unset !important;
+        transform: none !important;
         opacity: 1 !important; // Always visible
         pointer-events: auto !important; // Always interactive
+        padding: 0 !important;
         background: none;
         color: abstracts.$text-body;
         border: none;
-        padding: 0;
-        width: 190px;
         font-size: 0.75rem;
         display: block;
         white-space: normal;
