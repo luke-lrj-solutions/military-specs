@@ -44,12 +44,16 @@
         } else {
             $positionClass = 'timeline__plip--center';
         }
+
+        // Apply a minimum spacing between plips
+        $minPixelGap = 75;
+        $leftClamp = "clamp({$percent}%, " . ($minPixelGap * $index) . "px, 100%)";
       @endphp
 
       <div class="timeline__plip {{ $positionClass }} @if($year == $currentYear) timeline__plip--current @endif"
-           style="left: {{ $percent }}%; --plip-left: {{ $percent }}%;"
+           style="left: {{ $leftClamp }}; --plip-left: {{ $percent }}%;"
            data-index="{{ $index }}">
-        <span class="timeline__label">{{$year}}<br>{{ $label }}</span>
+        <span class="timeline__label">{{ $year }}<br>{{ $label }}</span>
         @if($tooltip)
           <span class="timeline__tooltip">{{ $tooltip }}</span>
         @endif
