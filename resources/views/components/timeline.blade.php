@@ -28,7 +28,7 @@
       @php
         $percent = ( (intval($year) - intval($startDate)) / (intval($end) - intval($startDate)) ) * 100;
       @endphp
-      <div class="timeline__plip @if($year == $currentYear) timeline__plip--current @endif @if($percent > 50) timeline__plip--right @endif"
+      <div class="timeline__plip @if($year == $currentYear) timeline__plip--current @endif @if($percent > 65) timeline__plip--right @elseif($percent < 35) timeline__plip--left @else timeline__plip--center @endif""
            style="left: {{ $percent }}%;"
            data-index="{{ $index }}">
         <span class="timeline__label">{{ $year }}</span>
