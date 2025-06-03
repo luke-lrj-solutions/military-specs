@@ -1,7 +1,17 @@
 @php
   $metaItems = [
-    ['key' => 'Predecessor', 'value' => 'F-11 Starfighter', 'link' => ''],
-    ['key' => 'Successor', 'value' => 'F-35 Lightening', 'link' => ''],
+    [
+      'key' => 'Predecessor',
+      'value' => 'F-11 Starfighter',
+      'link' => '',
+      'span' => ''
+    ],
+    [
+      'key' => 'Successor',
+      'value' => 'F-35 Lightening',
+      'link' => '',
+      'span' => ''
+    ],
   ];
 @endphp
 

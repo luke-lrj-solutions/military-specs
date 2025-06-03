@@ -1,9 +1,29 @@
 @php
   $metaItems = [
-    ['key' => 'Country', 'value' => 'United States', 'link' => ''],
-    ['key' => 'Manufacturer', 'value' => 'Lockheed Martin', 'link' => ''],
-    ['key' => 'Manufacturer', 'value' => 'Lockheed Martin', 'link' => ''],
-    ['key' => 'Manufacturer', 'value' => 'Lockheed Martin', 'link' => ''],
+    [
+      'key' => 'Country',
+      'value' => 'United States',
+      'link' => '',
+      'span' => '3'
+    ],
+    [
+      'key' => 'Manufacturer',
+      'value' => 'Lockheed Martin',
+      'link' => '',
+      'span' => ''
+    ],
+    [
+      'key' => 'Manufacturer',
+      'value' => 'Lockheed Martin',
+      'link' => '',
+      'span' => ''
+    ],
+    [
+      'key' => 'Manufacturer',
+      'value' => 'Lockheed Martin',
+      'link' => '',
+      'span' => ''
+    ],
   ];
 @endphp
 

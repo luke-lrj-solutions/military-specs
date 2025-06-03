@@ -1,6 +1,11 @@
 @php
   $metaItems = [
-    ['key' => 'Status', 'value' => 'In Service', 'link' => ''],
+    [
+      'key' => 'Status',
+      'value' => 'In Service',
+      'link' => '',
+      'span' => ''
+     ],
   ];
 @endphp
 
@@ -12,8 +17,18 @@
 
 @php
   $metaItems = [
-    ['key' => 'Duration (Current)', 'value' => '27 Years', 'link' => ''],
-    ['key' => 'Duration (Planned)', 'value' => '33 Years', 'link' => ''],
+    [
+      'key' => 'Duration (Current)',
+      'value' => '27 Years',
+      'link' => '',
+      'span' => ''
+    ],
+    [
+      'key' => 'Duration (Planned)',
+      'value' => '33 Years',
+      'link' => '',
+      'span' => ''
+    ],
 
   ];
 @endphp
@@ -27,8 +42,18 @@
 
 @php
   $metaItems = [
-    ['key' => 'Entered Service', 'value' => '1998', 'link' => ''],
-    ['key' => 'Planned Decommission', 'value' => '2030', 'link' => ''],
+    [
+      'key' => 'Entered Service',
+      'value' => '1998',
+      'link' => '',
+      'span' => ''
+    ],
+    [
+      'key' => 'Planned Decommission',
+      'value' => '2030',
+      'link' => '',
+      'span' => ''
+    ],
   ];
 @endphp
 

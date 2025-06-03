@@ -6,7 +6,7 @@
 
     <div class="meta-list" style="grid-template-columns: repeat({{ $columns ?? '1' }}, 1fr)">
       @foreach ($items as $item)
-        <div class="meta-item link-hover-section">
+        <div class="meta-item link-hover-section @if($item['span']) span-{{ $item['span'] }}" @endif" >
           <p class="key">{{ $item['key'] }}</p>
           <p class="taxonomy">
             @if ($item['link'])

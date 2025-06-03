@@ -5,7 +5,7 @@
   gap: 2rem;
 
   @container (max-width: 900px) {
-      grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr) !important;
   }
   @container (max-width: 450px) {
     grid-template-columns: 1fr !important;
@@ -18,13 +18,25 @@
   padding-top: .5rem;
   border-top: solid 1px abstracts.$color-border;
   min-width: 150px;
+  &.span-2 {
+    grid-column: span 2;
+  }
+  &.span-3 {
+    grid-column: span 3;
+  }
+  @container (max-width: 900px) {
+    &.span-2, &.span-3  {
+      grid-column: span 2 !important;
+    }
+  }
+  @container (max-width: 450px) {
+    &.span-2, &.span-3  {
+      grid-column: span 1 !important;
+    }
+  }
+
+
   a {
-    //&::after {
-    //  background-color: abstracts.$taxonomy-link-border-color;
-    //}
-    //&::before {
-    //  background-color: abstracts.$link-baseline-border-color;
-    //}
     &:hover {
       &::after {
         width: 100%;
