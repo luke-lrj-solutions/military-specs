@@ -31,16 +31,21 @@
     left: 50%;
     margin-bottom: 0.5rem;
     opacity: 0;
-    
+
     transform: translateY(10px) translateX(-50%);
     animation-delay: calc(var(--plip-left) * 10ms);
 
-    &::after {
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border-color: abstracts.$bg-card transparent transparent transparent;
-    }
+  }
+
+  &.tooltip--bottom .tooltip-text {
+    top: 100%;
+    left: 50%;
+    margin-top: 0.5rem;
+    opacity: 0;
+
+    transform: translateY(10px) translateX(-50%);
+    animation-delay: calc(var(--plip-left) * 10ms);
+
   }
 
   // Add similar blocks for `tooltip--bottom`, `--left`, `--right`...
