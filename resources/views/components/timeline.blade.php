@@ -59,7 +59,10 @@
            data-index="{{ $index }}">
         @if($tooltip)
           <x-tooltip :text="$tooltip" position="top">
-            <div class="plip-circle"></div>
+            <div class="plip-circle">
+              <span class="pulse-ring"></span>
+
+            </div>
             <span class="timeline__label">@if($year == $currentYear) <b>[{{$year}}]</b> @else <b>{{ $year }}</b>{{ $label }}@endif</span>
           </x-tooltip>
         @else
