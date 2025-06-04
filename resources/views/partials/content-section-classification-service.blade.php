@@ -45,7 +45,7 @@
 @endphp
 
 <x-timeline
-  :startDate="1975"
-  :endDate="2060"
+  :startDate="1970"
+  :endDate="2055"
   :timeline="$timeline"
 />

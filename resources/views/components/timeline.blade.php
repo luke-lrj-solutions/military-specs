@@ -15,7 +15,7 @@
   // Build combined years array: start, checkpoints, end, currentYear
   $allYears = collect([$startDate, $end])
       ->merge($checkpoints)
-      ->when($currentYear >= $startDate && $currentYear <= $end, fn($points) => $points->push($currentYear))
+//      ->when($currentYear >= $startDate && $currentYear <= $end, fn($points) => $points->push($currentYear))
       ->merge($timelineData->keys())
       ->unique()
       ->sort()

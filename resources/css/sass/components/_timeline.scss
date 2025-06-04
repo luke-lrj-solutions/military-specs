@@ -194,7 +194,15 @@
     }
   }
 
+  @container (max-width: 1200px) {
+    &__progress {
 
+      width: 100% !important;
+
+
+    }
+
+  }
 
 
   @container (max-width: 450px) {
@@ -213,7 +221,7 @@
     &__progress {
       width: 2px !important;
       height: 100%;
-      background: abstracts.$color-border;
+      background: abstracts.$accent-color;
       position: absolute;
       top: 0;
       left: 10px;
@@ -233,7 +241,9 @@
         position: absolute;
         top: 0;
         left: 0;
-
+        .pulse-ring {
+          display: none !important;
+        }
       }
       &--current {
         .plip-circle {
