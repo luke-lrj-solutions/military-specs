@@ -10,7 +10,9 @@
           <p class="key">{{ $item['key'] }}</p>
           <p class="taxonomy">
             @if ($item['link'])
-            <a class="underline" href="{{ $item['link'] }}">{{ $item['value'] }}</a>
+              <x-tooltip :text="$item['value']" position="top">
+                <a class="underline" href="{{ $item['link'] }}">{{ $item['value'] }}</a>
+              </x-tooltip>
             @else
             {{ $item['value'] }}
             @endif
