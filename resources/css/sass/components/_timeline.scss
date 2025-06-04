@@ -59,28 +59,36 @@
       animation: fadeInUp 0.4s ease forwards;
       animation-delay: calc(var(--plip-left) * 10ms);
     }
+
+    .timeline__label {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      font-size: 0.75rem;
+      color: #ccc;
+      z-index: 3;
+      text-align: center;
+      max-width: 100px;
+      white-space: normal;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      opacity: 0;
+      transform: translateY(10px) translateX(-50%);
+      animation: fadeInUpOffset 0.4s ease forwards;
+      animation-delay: calc(var(--plip-left) * 10ms);
+    }
     @keyframes fadeInUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    .timeline__label {
-      position: absolute;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.75rem;
-      color: #ccc;
-      white-space: nowrap;
-      z-index: 3;
-      text-align: center;
-      max-width: 100px;
-      white-space: normal;
-      transition: color 200ms ease;
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: flex-start;
+    @keyframes fadeInUpOffset {
+      to {
+        opacity: 1;
+        transform: translateY(0) translateX(-50%);
+      }
     }
     &--current {
       z-index: 1;
