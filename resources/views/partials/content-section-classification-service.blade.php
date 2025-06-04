@@ -46,6 +46,6 @@
 
 <x-timeline
   :startDate="1970"
-  :endDate="2055"
+  :endDate="2050"
   :timeline="$timeline"
 />
