@@ -1,11 +1,14 @@
 @use '../abstracts';
 
 
-.svg-entity {
-  svg {
+
+  .svg-vehicle, .svg-munition, .svg-weapon, .table__thumb svg {
     width: 100% !important;
-    * path, g {
-      stroke: abstracts.$accent-color !important;
+    path, g {
+      stroke: abstracts.$text-body !important;
+      fill: abstracts.$text-body !important;
+      stroke-width: 10px !important;
     }
+
   }
-}
+

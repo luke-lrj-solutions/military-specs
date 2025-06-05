@@ -28,7 +28,7 @@
   $progressClamp = "clamp({$currentPercent}%, 0px , 100%)";
 @endphp
 
-<div class="timeline">
+<div class="timeline animate-on-visible">
   <div class="timeline__track">
     <div class="timeline__track--path"></div>
 

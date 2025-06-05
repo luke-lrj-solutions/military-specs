@@ -26,7 +26,7 @@
 
       $svg_content = preg_replace(
         '/(<svg[^>]*>)/',
-        '$1' . $style_tag,
+        '$1',
         $svg_content,
         1
       );
