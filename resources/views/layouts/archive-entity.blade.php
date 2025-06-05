@@ -16,15 +16,19 @@
 
     <main class="entity-content">
 
-      <div class="title"><h1>{{ get_the_title() }}{!! ' ' . get_field('nickname') !!}</h1></div>
+      <div class="title"><h1>Objects</h1></div>
 
       <div class="entity-section">
 
-        @include('partials.content-section-classification')
-        @include('partials.content-section-crew')
-        @include('partials.content-section-relations')
-        @include('partials.content-section-armaments')
-        @include('partials.content-section-systems')
+        @php
+          $custom_query = new WP_Query([
+            'post_type' => ['vehicle', 'weapon', 'munition'],
+            'posts_per_page' => -1,
+          ]);
+        @endphp
+
+        @include('partials.table-loop-entity', ['query' => $custom_query])
+
       </div>
     </main>
 
