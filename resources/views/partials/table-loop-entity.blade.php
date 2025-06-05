@@ -13,6 +13,7 @@
         $rows[] = [
           'thumbnail' => $svg_component,
           'name' => get_the_title(),
+          'link' => get_the_permalink(),
           'description' => get_field('type') ?: 'Unknown Type',
           'fields' => [
             get_field('origin') ?: 'Unknown Origin',

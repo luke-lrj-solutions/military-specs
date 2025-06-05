@@ -9,6 +9,8 @@
       'name' => 'AIM-9 Sidewinder',
       'description' => 'Short Range Anti Air',
       'fields' => [2,  'SRAA'],
+      'link' => '',
+
     ],
     [
       'thumbnail' => '<svg xmlns="http://www.w3.org/2000/svg" width="459" height="62" viewBox="0 0 459 62" fill="none">
@@ -17,6 +19,8 @@
       'name' => 'AIM-7 Sparrow',
       'description' => 'Anti Air Missile',
       'fields' => [2,  'AAM'],
+      'link' => '',
+
     ],
   ];
 @endphp

@@ -8,6 +8,8 @@
 </svg>',
       'name' => 'F-16B',
       'description' => 'Two Seater Fighter',
+      'link' => '',
+
       'fields' => ['1976'],
     ],
     [
@@ -22,6 +24,8 @@
 </svg>
 ',
       'name' => 'F-16C',
+      'link' => '',
+
       'description' => 'Single Seater Multi Role Fighter',
       'fields' => ['1976'],
     ],

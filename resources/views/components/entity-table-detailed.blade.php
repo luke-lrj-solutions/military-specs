@@ -23,8 +23,7 @@
             @endif
           </td>
           <td class="table__name link-hover-section entity">
-
-            <a class="" href="">{{ $row['name'] ?? '' }}</a>
+            <a class="" href="{{ $row['link'] }}">{{ $row['name'] ?? '' }}</a>
           </td>
 
           {{-- Description --}}

@@ -9,6 +9,8 @@
       'name' => 'Paveway 12',
       'description' => 'Unguided Bomb',
       'fields' => [2,  '250lb'],
+      'link' => '',
+
     ],
     [
       'thumbnail' => '<svg xmlns="http://www.w3.org/2000/svg" width="331" height="62" viewBox="0 0 331 62" fill="none">
@@ -17,6 +19,8 @@
       'name' => 'Paveway 14',
       'description' => 'Unguided Bomb',
       'fields' => [2,  '500lb'],
+      'link' => '',
+
     ],
   ];
 @endphp
