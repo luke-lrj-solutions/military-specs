@@ -10,7 +10,7 @@
     left: -20px;
     width: 60px; // 20 + 20 + plip (20px)
     height: 60px;
-    z-index: 1;
+    z-index: 0;
     pointer-events: auto;
   }
   .tooltip-text {
