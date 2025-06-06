@@ -2,36 +2,17 @@
 
 namespace App\Models;
 
-use WP_Post;
-
-class Vehicle
+class Vehicle extends Entity
 {
-    protected WP_Post $post;
-
-    public function __construct(WP_Post $post)
+    public function crewSize(): ?string
     {
-        $this->post = $post;
+        return get_field('crew_size', $this->id());
     }
 
-    public function id(): int
+    public function vehicleType(): ?string
     {
-        return $this->post->ID;
+        return get_field('vehicle_type', $this->id());
     }
 
-    public function title(): string
-    {
-        return get_the_title($this->post);
-    }
-
-    public function slug(): string
-    {
-        return $this->post->post_name;
-    }
-
-    public function permalink(): string
-    {
-        return get_permalink($this->post);
-    }
-
-    // Add more as needed later
+    // ... more vehicle-specific logic
 }
