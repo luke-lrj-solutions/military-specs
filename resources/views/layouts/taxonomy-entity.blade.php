@@ -2,10 +2,10 @@
   <div class="entity-grid">
     <div class="entity-sidebar-container">
       <aside class="entity-sidebar">
-        @include('partials.content-section-sidebar-thumbnail')
+        @include('partials.content-sections.sidebar-thumbnail')
 
         <div class="entity-sidebar__meta meta-list">
-          @include('partials.content-section-sidebar-meta')
+          @include('partials.content-sections.sidebar-meta')
         </div>
       </aside>
     </div>
@@ -22,23 +22,7 @@
       </div>
 
       <div class="entity-section">
-        @php
-          $term = get_queried_object();
-
-          $custom_query = new WP_Query([
-            'post_type' => ['vehicle', 'weapon', 'munition'],
-            'posts_per_page' => -1,
-            'tax_query' => [
-              [
-                'taxonomy' => $term->taxonomy,
-                'field'    => 'term_id',
-                'terms'    => $term->term_id,
-              ]
-            ],
-          ]);
-        @endphp
-
-        @include('partials.table-loop-entity', ['query' => $custom_query])
+        @include('partials.table-loop-entity', ['query' => $entities])
       </div>
     </main>
   </div>

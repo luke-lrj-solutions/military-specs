@@ -2,26 +2,26 @@
   $columns = ['Vehicle', '', 'Type', 'Origin', 'Status'];
   $rows = [];
 
-  // Loop through query var
-  if ($query->have_posts()) {
-    while ($query->have_posts()) {
-      $query->the_post();
+  foreach ($entities as $entity) {
+    $svg_thumb = get_field('svg_file', $entity->id());
 
-        $svg_thumb = get_field('svg_file');
-        $svg_component = $svg_thumb ? view('components.svg-entity', ['file' => $svg_thumb, 'attributes' => ['class' => 'svg-vehicle']])->render() : '<div class="placeholder-svg">No SVG</div>';
+    $svg_component = $svg_thumb
+      ? view('components.svg-entity', [
+          'file' => $svg_thumb,
+          'attributes' => ['class' => 'svg-vehicle']
+        ])->render()
+      : '<div class="placeholder-svg">No SVG</div>';
 
-        $rows[] = [
-          'thumbnail' => $svg_component,
-          'name' => get_the_title(),
-          'link' => get_the_permalink(),
-          'description' => get_field('type') ?: 'Unknown Type',
-          'fields' => [
-            get_field('origin') ?: 'Unknown Origin',
-            get_field('status') ?: 'Unknown Status',
-          ],
-        ];
-    }
-    wp_reset_postdata();
+    $rows[] = [
+      'thumbnail' => $svg_component,
+      'name' => $entity->title(),
+      'link' => $entity->permalink(),
+      'description' => get_field('type', $entity->id()) ?: 'Unknown Type',
+      'fields' => [
+        get_field('origin', $entity->id()) ?: 'Unknown Origin',
+        get_field('status', $entity->id()) ?: 'Unknown Status',
+      ],
+    ];
   }
 @endphp
 
