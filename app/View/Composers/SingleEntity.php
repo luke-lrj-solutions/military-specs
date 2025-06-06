@@ -3,18 +3,20 @@
 namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
-use App\Models\Vehicle;
+use App\Models\EntityFactory;
 
 class SingleEntity extends Composer
 {
     protected static $views = [
-        'single-entity',
+        'layouts.single-entity', // or whatever view name you're using
     ];
 
     public function with(): array
     {
+        $post = get_post();
+
         return [
-            'vehicle' => new Vehicle(get_post()),
+            'entity' => EntityFactory::make($post),
         ];
     }
 }

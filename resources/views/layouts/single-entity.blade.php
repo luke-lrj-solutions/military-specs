@@ -15,15 +15,12 @@
     </div>
 
     <main class="entity-content">
-      <div class="title"><h1>{{ $vehicle->title() }}{!! ' ' . get_field('nickname') !!}</h1></div>
+      <div class="title"><h1>{{ $entity->title() }}{!! ' ' . get_field('nickname') !!}</h1></div>
 
       <div class="entity-section">
 
-        @include('partials.content-section-classification')
-        @include('partials.content-section-crew')
-        @include('partials.content-section-relations')
-        @include('partials.content-section-armaments')
-        @include('partials.content-section-systems')
+        @includeIf("partials.routes.{$entity->postType()}", ['entity' => $entity])
+
       </div>
     </main>
 
