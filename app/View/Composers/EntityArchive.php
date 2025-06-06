@@ -2,21 +2,40 @@
 
 namespace App\View\Composers;
 
-use Roots\Acorn\View\Composer;
 use App\Models\EntityFactory;
+use Roots\Acorn\View\Composer;
 
-class SingleEntity extends Composer
+class EntityArchive extends Composer
 {
     protected static $views = [
-        'layouts.single-entity', // or whatever view name you're using
+        'layouts.taxonomy-entity',
     ];
 
     public function with(): array
     {
-        $post = get_post();
+        $term = get_queried_object();
+
+        $query_args = [
+            'post_type' => ['vehicle', 'weapon', 'munition'],
+            'posts_per_page' => -1,
+        ];
+
+        // If it's a taxonomy term page, add tax_query
+        if (isset($term->taxonomy)) {
+            $query_args['tax_query'] = [[
+                'taxonomy' => $term->taxonomy,
+                'field' => 'term_id',
+                'terms' => $term->term_id,
+            ]];
+        }
+
+        $query = new \WP_Query($query_args);
+
+        $entities = array_map(fn ($post) => EntityFactory::make($post), $query->posts);
 
         return [
-            'entity' => EntityFactory::make($post),
+            'entities' => $entities,
+            'term' => $term ?? null,
         ];
     }
 }

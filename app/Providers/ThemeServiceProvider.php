@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Roots\Acorn\Sage\SageServiceProvider;
-use App\View\Composers\SingleEntity; // 👈 Import your composer class
+
 
 class ThemeServiceProvider extends SageServiceProvider
 {
@@ -40,5 +40,6 @@ class ThemeServiceProvider extends SageServiceProvider
             'single-entity', // fallback just in case you move it
         ], \App\View\Composers\SingleEntity::class);
         view()->composer('layouts.single-entity', \App\View\Composers\SingleVehicle::class);
+        view()->composer('layouts.taxonomy-entity', \App\View\Composers\EntityArchive::class);
     }
 }
