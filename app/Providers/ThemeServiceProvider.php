@@ -39,5 +39,6 @@ class ThemeServiceProvider extends SageServiceProvider
             'layouts.single-entity',
             'single-entity', // fallback just in case you move it
         ], \App\View\Composers\SingleEntity::class);
+        view()->composer('layouts.single-entity', \App\View\Composers\SingleVehicle::class);
     }
 }

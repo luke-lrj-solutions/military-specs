@@ -4,11 +4,11 @@
 
       <aside class="entity-sidebar">
 
-        @include('partials.content-section-sidebar-thumbnail')
+        @include('partials.content-sections.sidebar-thumbnail')
 
         <div class="entity-sidebar__meta meta-list">
 
-          @include('partials.content-section-sidebar-meta')
+          @include('partials.content-sections.sidebar-meta')
 
         </div>
       </aside>
@@ -19,7 +19,7 @@
 
       <div class="entity-section">
 
-        @includeIf("partials.routes.{$entity->postType()}", ['entity' => $entity])
+        @includeIf("partials.routes.post-types.{$entity->postType()}", ['entity' => $entity])
 
       </div>
     </main>
