@@ -43,7 +43,7 @@ abstract class Entity
         return $this->post;
     }
 
-    public function getTaxTerms(string $taxonomy): ?array
+    public function getTaxTerms(string $taxonomy): ?array // Return all term for the provided taxonomy
     {
         $terms = get_the_terms($this->post->id, $taxonomy);
 
@@ -59,7 +59,7 @@ abstract class Entity
         }, $terms);
     }
 
-    public function getTaxFormatted(string $taxonomy): ?array
+    public function getTaxFormatted(string $taxonomy): ?array // Return comma separated list of terms
     {
         $terms = $this->getTaxTerms($taxonomy);
 
@@ -73,7 +73,7 @@ abstract class Entity
         ];
     }
 
-    public function buildMetaItem(string $key, string $taxonomy, int $span = 2): ?array
+    public function buildMetaItem(string $key, string $taxonomy, int $span = 2): ?array // Return list for meta-list component
     {
         $data = $this->getTaxFormatted($taxonomy);
 
@@ -89,7 +89,7 @@ abstract class Entity
         ];
     }
 
-    public function getMetaFromTaxMap(array $map): array
+    public function getMetaFromTaxMap(array $map): array // Create array map for returning multiple taxonomies
     {
         return array_filter(array_map(function ($taxonomy, $label) {
             return $this->buildMetaItem($label, $taxonomy);
