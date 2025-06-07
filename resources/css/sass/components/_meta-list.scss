@@ -35,13 +35,18 @@
     }
   }
 
-
   a {
     &:hover {
       &::after {
         width: 100%;
       }
     }
+  }
+
+  .taxonomy {
+    display: flex;
+    flex-flow: row wrap;
+    gap: abstracts.$meta-gap;
   }
 }
 

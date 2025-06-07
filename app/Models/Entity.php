@@ -42,4 +42,50 @@ abstract class Entity
     {
         return $this->post;
     }
+
+    public function getTaxTerms(string $taxonomy): ?array
+    {
+        $terms = get_the_terms($this->post->id, $taxonomy);
+
+        if (is_wp_error($terms) || empty($terms)) {
+            return null;
+        }
+
+        return array_map(function ($term) {
+            return [
+                'name' => $term->name,
+                'link' => get_term_link($term),
+            ];
+        }, $terms);
+    }
+
+    public function getTaxFormatted(string $taxonomy): ?array
+    {
+        $terms = $this->getTaxTerms($taxonomy);
+
+        if (!$terms) {
+            return null;
+        }
+
+        return [
+            'value' => implode(', ', array_column($terms, 'name')),
+            'links' => $terms,
+        ];
+    }
+
+    public function buildMetaItem(string $key, string $taxonomy, int $span = 2): ?array
+    {
+        $data = $this->getTaxFormatted($taxonomy);
+
+        if (!$data) {
+            return null;
+        }
+
+        return [
+            'key' => $key,
+            'value' => $data['value'],
+            'links' => $data['links'],
+            'span' => $span,
+        ];
+    }
 }

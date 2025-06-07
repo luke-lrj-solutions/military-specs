@@ -2,13 +2,16 @@
 
 namespace App\View\Composers;
 
-use Roots\Acorn\View\Composer;
 use App\Models\EntityFactory;
+use Roots\Acorn\View\Composer;
 
 class SingleEntity extends Composer
 {
     protected static $views = [
-        'layouts.single-entity', // or whatever view name you're using
+        'layouts.single-entity',
+        'components.meta-list',
+        'partials.content-sections.sidebar-meta',
+
     ];
 
     public function with(): array
