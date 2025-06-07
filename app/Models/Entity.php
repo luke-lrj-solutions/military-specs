@@ -88,4 +88,11 @@ abstract class Entity
             'span' => $span,
         ];
     }
+
+    public function getMetaFromTaxMap(array $map): array
+    {
+        return array_filter(array_map(function ($taxonomy, $label) {
+            return $this->buildMetaItem($label, $taxonomy);
+        }, array_keys($map), $map));
+    }
 }

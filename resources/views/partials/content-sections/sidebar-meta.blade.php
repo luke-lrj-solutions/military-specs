@@ -1,7 +1,7 @@
 @php
-  $metaItems = array_filter([
-    $entity->buildMetaItem('Country', 'country-of-origin'),
-    $entity->buildMetaItem('Manufacturer', 'manufacturer'),
+  $metaItems = $entity->getMetaFromTaxMap([
+    'country-of-origin' => 'Country',
+    'manufacturer' => 'Manufacturer',
   ]);
 @endphp
 
