@@ -46,7 +46,8 @@
   .taxonomy {
     display: flex;
     flex-flow: row wrap;
-    gap: abstracts.$meta-gap;
+    row-gap: abstracts.$meta-gap;
+    column-gap: abstracts.$meta-gap * 4;
   }
 }
 
