@@ -9,8 +9,8 @@ class SingleEntity extends Composer
 {
     protected static $views = [
         'layouts.single-entity',
-        'components.meta-list',
-        'partials.content-sections.sidebar-meta',
+        'components.*',
+        'partials.content-sections.*',
 
     ];
 
