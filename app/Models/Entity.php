@@ -95,4 +95,23 @@ abstract class Entity
             return $this->buildMetaItem($label, $taxonomy);
         }, array_keys($map), $map));
     }
+
+    public function getNames(): array // Return acf name list
+    {
+        $names = [];
+
+        if (have_rows('names', $this->post->id)) {
+            while (have_rows('names', $this->post->id)) {
+                the_row();
+                $reference = get_sub_field('reference');
+                $value = get_sub_field('value');
+
+                if ($reference || $value) {
+                    $names[] = [$reference, $value];
+                }
+            }
+        }
+
+        return $names;
+    }
 }
