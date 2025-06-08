@@ -11,15 +11,22 @@ class SingleEntity extends Composer
         'layouts.single-entity',
         'components.*',
         'partials.content-sections.*',
+        'template-systems'
 
     ];
 
     public function with(): array
     {
-        $post = get_post();
+        global $post;
+
+        if ($post instanceof \WP_Post && in_array($post->post_type, ['vehicle', 'weapon', 'munition'])) {
+            return [
+                'entity' => \App\Models\EntityFactory::make($post),
+            ];
+        }
 
         return [
-            'entity' => EntityFactory::make($post),
+            'entity' => null,
         ];
     }
 }

@@ -5,7 +5,9 @@
         @include('partials.content-sections.sidebar-thumbnail')
 
         <div class="entity-sidebar__meta meta-list">
-          @include('partials.content-sections.sidebar-meta')
+          @if (isset($entity))
+            @include('partials.content-sections.sidebar-meta')
+          @endif
         </div>
       </aside>
     </div>
