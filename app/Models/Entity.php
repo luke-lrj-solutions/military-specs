@@ -114,4 +114,84 @@ abstract class Entity
 
         return $names;
     }
+
+    public function getServiceDates(): array
+    {
+        $entered = get_field('entered_group', $this->post->id);
+        $left = get_field('left_group', $this->post->id);
+        $now = (int) date('Y');
+
+        $data = [
+            'entered_actual' => null,
+            'entered_planned' => null,
+            'left_actual' => null,
+            'left_planned' => null,
+            'duration_actual' => null,
+            'duration_planned' => null,
+        ];
+
+        if ($entered && isset($entered['year'], $entered['type'])) {
+            $year = (int) $entered['year'];
+            if ($entered['type'] === 'actual') {
+                $data['entered_actual'] = $year;
+            } else {
+                $data['entered_planned'] = $year;
+            }
+        }
+
+        if ($left && isset($left['year'], $left['type'])) {
+            $year = (int) $left['year'];
+            if ($left['type'] === 'actual') {
+                $data['left_actual'] = $year;
+            } else {
+                $data['left_planned'] = $year;
+            }
+        }
+
+        // Calculate durations
+        if ($data['entered_actual']) {
+            $end = $data['left_actual'] ?: $now;
+            $data['duration_actual'] = $end - $data['entered_actual'];
+        }
+
+        if ($data['entered_planned'] && $data['left_planned']) {
+            $data['duration_planned'] = $data['left_planned'] - $data['entered_planned'];
+        }
+
+        return $data;
+    }
+
+
+
+    public function getSvgThumb(): string
+    {
+        $svg = get_field('svg_file', $this->id());
+
+        if ($svg) {
+            return view('components.svg-entity', [
+                'file' => $svg,
+                'attributes' => ['class' => 'svg-vehicle'],
+            ])->render();
+        }
+
+        return '<div class="placeholder-svg">No SVG</div>';
+    }
+
+    public function getOrigin(): string
+    {
+        return get_field('origin', $this->post->id) ?: 'Unknown Origin';
+    }
+
+    public function getStatus(): string
+    {
+        return get_field('status', $this->post->id) ?: 'Unknown Status';
+    }
+
+    public function getTypeLabel(): string
+    {
+        return get_field('type', $this->post->id) ?: 'Unknown Type';
+    }
 }
+
+
+

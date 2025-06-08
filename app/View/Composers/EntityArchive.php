@@ -9,6 +9,8 @@ class EntityArchive extends Composer
 {
     protected static $views = [
         'layouts.taxonomy-entity',
+        'partials.table-loop-entity',
+
     ];
 
     public function with(): array
