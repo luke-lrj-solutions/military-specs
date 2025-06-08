@@ -21,13 +21,14 @@
       <div class="entity-section">
 
         @php
-          $custom_query = new WP_Query([
-            'post_type' => 'munition',
-            'posts_per_page' => -1,
-          ]);
+          global $wp_query;
+          $entities = array_map(
+            [\App\Models\EntityFactory::class, 'make'],
+            $wp_query->posts
+          );
         @endphp
 
-        @include('partials.table-loop-entity', ['query' => $custom_query])
+        @include('partials.table-loop-entity', ['entities' => $entities])
 
       </div>
     </main>
