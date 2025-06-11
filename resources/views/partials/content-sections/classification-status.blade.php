@@ -13,6 +13,6 @@
 
 <x-meta-list
   heading="Status"
-  columns="2"
+  columns="3"
   :items="$metaItems"
 />

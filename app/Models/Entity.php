@@ -43,6 +43,12 @@ abstract class Entity
         return $this->post;
     }
 
+
+    public function getField(string $field)
+    {
+        return get_field($field, $this->id());
+    }
+
     public function getTerms($taxonomy)
     {
         return get_the_terms($this->id(), $taxonomy) ?: [];
@@ -104,6 +110,62 @@ abstract class Entity
             return $this->buildMetaItem($label, $taxonomy, $span);
 
         }, array_keys($map), $map));
+    }
+
+
+    public function getMetaFromACFTaxFieldMap(array $map): array
+    {
+        return array_filter(array_map(function ($acfField, $settings) {
+
+            $label = is_array($settings) ? ($settings['label'] ?? ucfirst($acfField)) : $settings;
+            $span = is_array($settings) ? ($settings['span'] ?? 2) : 2;
+
+            return $this->buildMetaItemFromACF($label, $acfField, $span);
+
+        }, array_keys($map), $map));
+    }
+
+
+    public function buildMetaItemFromACF(string $key, string $acfField, int $span = 2): ?array
+    {
+        $terms = $this->getField($acfField);
+
+        if (!$terms || empty($terms)) {
+            return null;
+        }
+
+        // Handle both single and multiple selection
+        if (!is_array($terms)) {
+            $terms = [$terms];
+        }
+
+        $values = [];
+        $links = [];
+
+        foreach ($terms as $term) {
+            if (is_object($term)) {
+                $termObj = $term;
+            } else {
+                $termObj = get_term($term);
+            }
+
+            if (!$termObj) {
+                continue;
+            }
+
+            $values[] = $termObj->name;
+            $links[] = [
+                'name' => $termObj->name,
+                'link' => get_term_link($termObj)
+            ];
+        }
+
+        return [
+            'key' => $key,
+            'value' => implode(', ', $values),
+            'links' => $links,
+            'span' => $span
+        ];
     }
     public function getNames(): array // Return acf name list
     {

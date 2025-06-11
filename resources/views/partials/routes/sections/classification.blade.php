@@ -5,7 +5,7 @@
 @endif
 @include('partials.content-sections.classification-service')
 @include('partials.content-sections.classification-status')
-@include('partials.content-sections.classification-origin')
+@include('partials.content-sections.classification-production')
 
 
 
