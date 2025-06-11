@@ -78,7 +78,7 @@ abstract class Entity
         ];
     }
 
-    public function buildMetaItem(string $key, string $taxonomy, int $span = 2): ?array // Return list for meta-list component
+    public function buildMetaItem(string $key, string $taxonomy, int $span = 2): ?array
     {
         $data = $this->getTaxFormatted($taxonomy);
 
@@ -94,13 +94,17 @@ abstract class Entity
         ];
     }
 
-    public function getMetaFromTaxMap(array $map): array // Create array map for returning multiple taxonomies
+    public function getMetaFromTaxMap(array $map): array
     {
-        return array_filter(array_map(function ($taxonomy, $label) {
-            return $this->buildMetaItem($label, $taxonomy);
+        return array_filter(array_map(function ($taxonomy, $settings) {
+
+            $label = is_array($settings) ? ($settings['label'] ?? ucfirst($taxonomy)) : $settings;
+            $span = is_array($settings) ? ($settings['span'] ?? '') : '';
+
+            return $this->buildMetaItem($label, $taxonomy, $span);
+
         }, array_keys($map), $map));
     }
-
     public function getNames(): array // Return acf name list
     {
         $names = [];

@@ -35,7 +35,7 @@
 
 <x-meta-list
   heading="Service"
-  columns="2"
+  columns="3"
   :items="$metaItems"
 />
 
