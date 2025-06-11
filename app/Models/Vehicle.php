@@ -27,6 +27,24 @@ class Vehicle extends Entity
         return $domain['slug'] ?? null;
     }
 
+    public function getPlatformType(): ?array
+    {
+        $terms = $this->getTerms('platform-type');
+
+        if (empty($terms)) {
+            return null;
+        }
+
+        $term = $terms[0]; // assuming single term assigned
+
+        return [
+            'name' => $term->name,
+            'slug' => $term->slug,
+            'id' => $term->term_id,
+        ];
+    }
+
+
     // Get the 'Variants' related posts (ACF post_object / relationship field)
     public function getVariants(): array
     {
