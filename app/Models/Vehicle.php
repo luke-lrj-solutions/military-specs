@@ -4,15 +4,38 @@ namespace App\Models;
 
 class Vehicle extends Entity
 {
-    public function crewSize(): ?string
+    public function getDomain(): ?array
     {
-        return get_field('crew_size', $this->id());
+        $terms = $this->getTerms('domain');
+
+        if (empty($terms)) {
+            return null;
+        }
+
+        $term = $terms[0]; // assuming single term assigned
+
+        return [
+            'name' => $term->name,
+            'slug' => $term->slug,
+            'id' => $term->term_id,
+        ];
     }
 
-    public function vehicleType(): ?string
+    public function domainSlug(): ?string
     {
-        return get_field('vehicle_type', $this->id());
+        $domain = $this->getDomain();
+        return $domain['slug'] ?? null;
     }
 
-    // ... more vehicle-specific logic
+    // Get the 'Variants' related posts (ACF post_object / relationship field)
+    public function getVariants(): array
+    {
+        return get_field('variants', $this->id()) ?: [];
+    }
+
+//     Return as collection of Entities (optional)
+    public function getVariantEntities(): array
+    {
+        return array_map(fn ($id) => new Vehicle($id), $this->getVariants());
+    }
 }

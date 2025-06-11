@@ -43,6 +43,11 @@ abstract class Entity
         return $this->post;
     }
 
+    public function getTerms($taxonomy)
+    {
+        return get_the_terms($this->id(), $taxonomy) ?: [];
+    }
+
     public function getTaxTerms(string $taxonomy): ?array // Return all term for the provided taxonomy
     {
         $terms = get_the_terms($this->post->id, $taxonomy);

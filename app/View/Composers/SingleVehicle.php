@@ -9,6 +9,7 @@ class SingleVehicle extends Composer
 {
     protected static $views = [
         'layouts.single-entity', // or wherever you render vehicles
+        'partials.routes.*'
     ];
 
     public function with(): array
