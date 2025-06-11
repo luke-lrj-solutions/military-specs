@@ -1,8 +1,6 @@
 @props([
-    'startDate',
-    'endDate' => null,
-    'checkpoints' => [], // Optional array of extra dates
-    'timeline' => [], // Your array of [year, label, tooltip]
+    'checkpoints' => [],
+    'timeline' => [],
 ])
 
 @php
@@ -12,20 +10,29 @@
   // Convert $timeline array into a keyed collection: [year => [label, tooltip]]
   $timelineData = collect($timeline)->keyBy('year');
 
-  // Build combined years array: start, checkpoints, end, currentYear
-  $allYears = collect([$startDate, $end])
+  // Build combined years array: start, checkpoints, end, timeline years
+   $allYears = collect()
       ->merge($checkpoints)
-//      ->when($currentYear >= $startDate && $currentYear <= $end, fn($points) => $points->push($currentYear))
-      ->merge($timelineData->keys())
+      ->merge(collect($timeline)->pluck('year'))
       ->unique()
       ->sort()
       ->values();
 
-  // Progress % for horizontal layout
+  $firstYear = $allYears->first();
+  $lastYear = $allYears->last();
+
+  // Progress bar calculation
+// Set current progress only if current year is within range
+if ($currentYear >= $firstYear && $currentYear <= $lastYear) {
+    $currentPercent = ((intval($currentYear) - intval($firstYear)) / max(1, (intval($lastYear) - intval($firstYear)))) * 100;
+} else {
+    $currentPercent = 100;
+}
+
+$progressClamp = "clamp({$currentPercent}%, 0px , 100%)";
+
+  // Minimum pixel gap between plips
   $minPixelGap = 75;
-  $currentIndex = $allYears->search($currentYear);
-  $currentPercent = ((intval($currentYear) - intval($startDate)) / (intval($end) - intval($startDate))) * 100;
-  $progressClamp = "clamp({$currentPercent}%, 0px , 100%)";
 @endphp
 
 <div class="timeline animate-on-visible">
@@ -36,12 +43,15 @@
 
     @foreach($allYears as $index => $year)
       @php
-        $percent = ((intval($year) - intval($startDate)) / (intval($end) - intval($startDate))) * 100;
+        // Position percentage relative to data-driven start and end
+        $percent = ((intval($year) - intval($firstYear)) / max(1, (intval($lastYear) - intval($firstYear)))) * 100;
+
+        // Lookup year data if provided
         $data = $timelineData->get($year, ['label' => $year, 'tooltip' => null]);
         $label = $data['label'] ?? $year;
         $tooltip = $data['tooltip'] ?? null;
 
-        // Determine position class
+        // Determine plip label positioning class
         if ($percent > 65) {
             $positionClass = 'timeline__plip--right';
         } elseif ($percent < 35) {
@@ -50,7 +60,7 @@
             $positionClass = 'timeline__plip--center';
         }
 
-        // Apply a minimum spacing between plips
+        // Apply minimum pixel spacing
         $leftClamp = "clamp({$percent}%, " . ($minPixelGap * $index) . "px, 100%)";
       @endphp
 
@@ -61,7 +71,6 @@
           <x-tooltip :text="$tooltip" position="top">
             <div class="plip-circle">
               <span class="pulse-ring"></span>
-
             </div>
             <span class="timeline__label">@if($year == $currentYear) <b>[{{$year}}]</b> @else <b>{{ $year }}</b>{{ $label }}@endif</span>
           </x-tooltip>
@@ -71,5 +80,6 @@
         @endif
       </div>
     @endforeach
+
   </div>
 </div>
