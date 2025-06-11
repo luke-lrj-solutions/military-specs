@@ -44,8 +44,8 @@
   $timeline = get_field('timeline'); // Assuming this is your ACF repeater or array field
 @endphp
 
-<x-timeline
-
-
-  :timeline="$timeline"
-/>
+@if($timeline)
+  <x-timeline
+    :timeline="$timeline"
+  />
+@endif

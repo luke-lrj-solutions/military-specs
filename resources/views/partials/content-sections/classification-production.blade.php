@@ -21,7 +21,8 @@
   $timeline = get_field('production_timeline'); // Assuming this is your ACF repeater or array field
 @endphp
 
+@if($timeline)
 <x-timeline
-
   :timeline="$timeline"
 />
+@endif
