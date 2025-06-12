@@ -1,40 +1,28 @@
 @php
   $metaItems = [
     [
-      'key' => 'Status',
-      'value' => 'In Service',
-      'link' => '',
-      'span' => '2'
-    ],
-     [
-      'key' => 'Duration (Current)',
-      'value' => '27 Years',
-      'link' => '',
-      'span' => ''
-    ],
-    [
-      'key' => 'Duration (Planned)',
-      'value' => '33 Years',
-      'link' => '',
-      'span' => ''
-    ],
-    [
       'key' => 'Entered Service',
       'value' => '1998',
       'link' => '',
       'span' => ''
     ],
-    [
+       [
       'key' => 'Planned Decommission',
       'value' => '2030',
       'link' => '',
       'span' => ''
     ],
+     [
+      'key' => 'Expected Service Life',
+      'value' => '33 Years',
+      'link' => '',
+      'span' => '1'
+    ],
   ];
 @endphp
 
 <x-meta-list
-  heading="Service"
+  heading="Timeline"
   columns="3"
   :items="$metaItems"
 />

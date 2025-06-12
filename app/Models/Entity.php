@@ -167,6 +167,56 @@ abstract class Entity
             'span' => $span
         ];
     }
+
+    public function getMetaFromACFPostMap(array $map): array
+    {
+        return array_filter(array_map(function ($acfField, $settings) {
+
+            $label = is_array($settings) ? ($settings['label'] ?? ucfirst($acfField)) : $settings;
+            $span = is_array($settings) ? ($settings['span'] ?? 2) : 2;
+
+            return $this->buildMetaItemFromACFPost($label, $acfField, $span);
+
+        }, array_keys($map), $map));
+    }
+
+
+    public function buildMetaItemFromACFPost(string $key, string $acfField, int $span = 2): ?array
+    {
+        $posts = $this->getField($acfField);
+
+        if (!$posts || empty($posts)) {
+            return null;
+        }
+
+        if (!is_array($posts)) {
+            $posts = [$posts]; // Handle single select
+        }
+
+        $values = [];
+        $links = [];
+
+        foreach ($posts as $post) {
+            $postObj = is_object($post) ? $post : get_post($post);
+
+            if (!$postObj) continue;
+
+            $values[] = get_the_title($postObj);
+            $links[] = [
+                'name' => get_the_title($postObj),
+                'link' => get_permalink($postObj),
+            ];
+        }
+
+        return [
+            'key' => $key,
+            'value' => implode(', ', $values),
+            'links' => $links,
+            'span' => $span
+        ];
+    }
+
+
     public function getNames(): array // Return acf name list
     {
         $names = [];

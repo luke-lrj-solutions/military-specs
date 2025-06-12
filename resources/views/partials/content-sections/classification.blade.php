@@ -16,7 +16,7 @@
 @endphp
 
 <x-meta-list
-  heading="Roles"
+  heading="Classification"
   columns="3"
   :items="$metaItems"
 />

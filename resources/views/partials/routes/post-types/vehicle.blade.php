@@ -1,4 +1,5 @@
-@include('partials.routes.sections.classification')
+@include('partials.routes.sections.key-information')
+@include('partials.routes.sections.service')
 @include('partials.routes.sections.crew')
 @include('partials.routes.sections.relations')
 @include('partials.routes.sections.armaments')
