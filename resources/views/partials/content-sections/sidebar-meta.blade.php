@@ -1,11 +1,11 @@
 @php
   $metaItems = $vehicle->getMetaFromACFTaxFieldMap([
-    'country_of_origin_primary' => [
-        'label' => 'Origin',
+    'vehicle_type' => [
+        'label' => 'Role',
         'span' => 1
     ],
-    'manufacturers' => [
-        'label' => 'Manufacturer',
+    'country_of_origin_primary' => [
+        'label' => 'Origin',
         'span' => 1
     ],
   ]);

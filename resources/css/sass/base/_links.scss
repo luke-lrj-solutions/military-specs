@@ -10,6 +10,8 @@ main {
 
 .entity:hover {
     a {
+      color: abstracts.$taxonomy-link-border-color;
+
       &::after {
         width: 50%;
       }
@@ -18,10 +20,17 @@ main {
 
 
 .link-hover-section {
-  &:hover a {
-    &::after {
-      width: 50%;
+  &:hover {
+    .key {
+      color: abstracts.$color-white;
     }
+    a {
+      color: abstracts.$taxonomy-link-border-color;
+      &::after {
+        width: 50%;
+      }
+    }
+
   }
   a {
     color: abstracts.$text-body;

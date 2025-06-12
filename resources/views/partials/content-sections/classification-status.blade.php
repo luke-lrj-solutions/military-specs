@@ -4,6 +4,10 @@
         'label' => 'Platform',
         'span' => 1
     ],
+    'vehicle-type' => [
+        'label' => 'Vehicle Type',
+        'span' => 1
+    ],
     'family' => [
         'label' => 'Family',
         'span' => 1
@@ -12,7 +16,7 @@
 @endphp
 
 <x-meta-list
-  heading="Status"
+  heading="Roles"
   columns="3"
   :items="$metaItems"
 />

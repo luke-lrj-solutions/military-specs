@@ -44,6 +44,7 @@ p, td, th {
 .key {
   color: abstracts.$color-baby-blue;
   font-weight: 500;
+  transition: 400ms;
 }
 
 .single-vehicle, .single-weapon, .single-munition {
